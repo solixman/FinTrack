@@ -1,30 +1,33 @@
 const express = require('express');
 const app = express();
+
 const router= express.Router();
-
 const dotenv = require('dotenv').config();
-
 app.set('view engine', 'ejs');
-// app.use(express.static('public'))
-const userRouter = require('./routes/users')
+app.use(express.urlencoded({ extended : true }));
 
-app.get('/',(req,res)=>{
-res.send('hiiiiiiii')
-});
-
+const userRouter = require('./routes/users');
+const authRouter = require('./routes/auth');
+const authViewsRouter = require('./routes/authViews');
 
 
-
-
-
+// app.get('/',(req,res)=>{
+// res.send('hiiiiiiii');
+// });
 
 
 app.use('/users',userRouter)
+app.use('/auth',authRouter)
+app.use(authViewsRouter)
 
 
 
 
-const port=process.env.Port;
-app.listen(port);
+
+
+
+
+
+app.listen(process.env.PORT);
 
 

@@ -2,8 +2,11 @@ const express = require('express');
 const router= express.Router()
 
 router.post('/register',(req,res)=>{
-    
-});
+    console.log(req.body.name);
+
+    res.send('hiiiii');
+
+}); 
 
 router.post('/login',(req,res)=>{
 
@@ -21,3 +24,5 @@ router.get('/forgotPassword',(req,res)=>{
 router.get('/changePassword',(req,res)=>{
 
 });
+
+module.exports = router;
