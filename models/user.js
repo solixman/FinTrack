@@ -11,7 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
     
-     
+      this.belongsTo(models.Role, {foreignKey: 'roleId'});
+      this.hasMany(models.Notification,{foreignKey:'userId', onDelete: 'CASCADE',})
+      this.hasMany(models.Transaction,{foreignKey:'userId', onDelete: 'CASCADE',})
+      this.hasMany(models.Budget,{foreignKey:'userId', onDelete: 'CASCADE',})
+      this.hasMany(models.SavingGoal,{foreignKey:'userId', onDelete: 'CASCADE',})
 
     }
   }
