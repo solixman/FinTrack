@@ -25,13 +25,13 @@ router.route('/:id').get((req,res)=>{
 })
 
 
-const users=[{name:'soulayman'},{name:'fchfach'}];
+// const users=[{name:'soulayman'},{name:'fchfach'}];
 
-router.param("id",(req,res,next,id)=>{
-     req.user= users[id];   
-     console.log('here')
-    next()
-})
+// router.param("id",(req,res,next,id)=>{
+//      req.user= users[id];   
+//      console.log('here')
+//     next()
+// })
 
 
 

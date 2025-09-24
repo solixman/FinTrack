@@ -4,7 +4,7 @@ const router= express.Router()
 router.post('/register',(req,res)=>{
 console.log(req.body);      
   console.log(req.body.name); 
-  res.send('hiiii');
+  res.send('hiiii'+`i am ${req.body.name}`);
    
     
 }); 
