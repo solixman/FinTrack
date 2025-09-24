@@ -10,16 +10,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       targetAmount: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false,
       },
       targetDate: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        
       },
       currentAmount: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false,
+        defaultValue:0
       },
       createdAt: {
         allowNull: false,

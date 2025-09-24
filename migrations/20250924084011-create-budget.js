@@ -10,13 +10,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       categoryId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       limitAmount: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        allowNull: false,
       },
       month: {
         type: Sequelize.STRING
