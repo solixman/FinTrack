@@ -1,10 +1,11 @@
 const express = require('express');
 const router= express.Router()
+const authController = require('../app/controllers/authController')
+
 
 router.post('/register',(req,res)=>{
-console.log(req.body);      
-  console.log(req.body.name); 
-  res.send('hiiii'+`i am ${req.body.name}`);
+
+  authController.register(req,res);
    
     
 }); 
