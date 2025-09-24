@@ -17,10 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     message: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
     date: DataTypes.DATE,
-    seen: DataTypes.BOOLEAN
+    seen: {
+      type: DataTypes.BOOLEAN,
+      defaultValue:false
+    }
   }, {
     sequelize,
     modelName: 'Notification',
+    timestamps: true,
   });
   return Notification;
 };

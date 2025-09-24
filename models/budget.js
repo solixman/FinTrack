@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Budget',
+    timestamps: true,
   });
   return Budget;
 };
