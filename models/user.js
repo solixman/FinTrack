@@ -10,13 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-    
-      this.belongsTo(models.Role, {foreignKey: 'roleId'});
       this.hasMany(models.Notification,{foreignKey:'userId', onDelete: 'CASCADE',})
       this.hasMany(models.Transaction,{foreignKey:'userId', onDelete: 'CASCADE',})
       this.hasMany(models.Budget,{foreignKey:'userId', onDelete: 'CASCADE',})
       this.hasMany(models.SavingGoal,{foreignKey:'userId', onDelete: 'CASCADE',})
 
+      
     }
   }
   User.init({
@@ -25,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     currency: DataTypes.FLOAT,
     preferences: DataTypes.TEXT,
-    roleId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',
