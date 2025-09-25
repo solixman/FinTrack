@@ -8,19 +8,18 @@ router.get('/register',(req,res)=>{
 
 }); 
 
-router.get('login',(req,res)=>{
+router.get('/login',(req,res)=>{
+ res.render('../views/login.ejs');
+});
+router.get('/logout',(req,res)=>{
 
 });
-router.get('logout',(req,res)=>{
+
+router.get('/me',(req,res)=>{
 
 });
 
-router.get('me',(req,res)=>{
 
-});
-router.get('forgotPassword',(req,res)=>{
-
-});
 router.get('changePassword',(req,res)=>{
 
 });
