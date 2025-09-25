@@ -1,6 +1,5 @@
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 
 
@@ -14,19 +13,19 @@ module.exports = {
             let { name, email, password, passwordConfirmation } = req.body;
 
             if (!name || !email || !password) {
-                return res.json({ message: 'name, email, and password required' });
+                throw new error("name, email, and password required");
             }
             if (password !== passwordConfirmation) {
-                return res.json({ message: 'passwords are not the same' });
+                throw new error("passwords are not the same");
             }
             if (password.length < 8) {
-                return res.status(400).json({ message: 'Password must be at least 8 characters' });
+                throw new error("Password must be at least 8 characters");
             }
 
             const existing = await User.findOne({ where: { email: email } });
 
             if (existing) {
-                return res.status(400).json({ message: 'email already exists' });
+                throw new error('email already exists');
             }
 
 
@@ -39,7 +38,7 @@ module.exports = {
 
               console.log(user);
             res.send('registered and logged in');
-
+            
         } catch (error) {
             console.error(error);
             res.send('what now')
@@ -50,6 +49,30 @@ module.exports = {
 
     },
 
-
+    
+    async login (req,res){
+        
+        
+        let {email,password}=req.body;
+        
+        if(!email || !password){
+            throw new Error("email and password required");
+        }
+        
+        const user=  User.findOne({where:{email:email}});
+        if(!user){
+            throw new error("email");
+        }
+        
+        isRight= await bcrypt.compare(password,user.password);
+        
+        console.log(isRight);
+        
+        
+        res.send('logging in');
+        
+    } 
+    
+    
 
 }
