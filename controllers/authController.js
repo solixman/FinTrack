@@ -30,23 +30,15 @@ module.exports = {
             }
 
 
-            bcrypt.genSalt(10, (err, salt) => {
-                if (err) {
-                    console.log('salt error', err);
-                    return;
-                }
-                bcrypt.hash(password, salt, (err, hash) => {
-                    if (err) {
-                        console.log('in hash error:', err);
-                        return
-                    }
-                 let user =  User.create({ name: name, email: email, password: hash });
-                })
+            const salt = await bcrypt.genSalt(10);
+            const hash = await bcrypt.hash(password, salt);
+            let user = await User.create({ name: name, email: email, password: hash });
 
+            req.session.user = user;
+            req.session.isLoggedIn = true
 
-            })
-
-            res.send('working so far');
+              console.log(user);
+            res.send('registered and logged in');
 
         } catch (error) {
             console.error(error);

@@ -4,7 +4,10 @@ const router= express.Router()
 
 
 router.get('/', (req,res)=>{
-    res.send('users list')
+    
+   req.session.user
+    res.send( req.session.user);
+
 });
 
 router.get('/new',(req,res)=>{
