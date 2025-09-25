@@ -59,12 +59,15 @@ module.exports = {
             throw new Error("email and password required");
         }
         
-        const user=  User.findOne({where:{email:email}});
+        let user= await  User.findOne({where:{email:email}});
         if(!user){
-            throw new error("email");
+            throw new error("email is not in our system");
         }
         
-        isRight= await bcrypt.compare(password,user.password);
+        console.log(password,user.password);
+        
+        
+        const   isRight= await bcrypt.compare(password,user.password);
         
         console.log(isRight);
         
