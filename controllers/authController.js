@@ -40,8 +40,7 @@ module.exports = {
             
         } catch (Error) {
             console.Error(Error);
-            res.send('what now')
-
+            res.send('something went wrong')
         }
 
 
@@ -51,44 +50,55 @@ module.exports = {
     
     async login (req,res){
     
-        
-        let {email,password}=req.body;
-        
-        if(!email || !password){
-            throw new Error("email and password required");
+        try {
+            
+            let {email,password}=req.body;
+            
+            if(!email || !password){
+                throw new Error("email and password required");
+            }
+            
+            let user= await  User.findOne({where:{email:email}});
+            if(!user){
+                throw new Error("email is not in our system");
+            }
+            
+            
+            
+            const   isRight= await bcrypt.compare(password,user.password);
+            
+            if(!isRight){
+                throw new Error("password or email incorrect");
+            }
+            
+            
+            
+            req.session.user= {id:user.id,name:user.name,email:user.email}
+            req.session.isLoggedIn=true;
+            
+            
+            res.send('logging in');
+            
+        } catch (error) {
+            console.Error(Error);
+            res.send('something went wrong')
         }
-        
-        let user= await  User.findOne({where:{email:email}});
-        if(!user){
-            throw new Error("email is not in our system");
-        }
-        
-        
-        
-        const   isRight= await bcrypt.compare(password,user.password);
-        
-        if(!isRight){
-        throw new Error("password or email incorrect");
-        }
-      
-      
-
-        req.session.user= {id:user.id,name:user.name,email:user.email}
-        req.session.isLoggedIn=true;
-        
-
-        res.send('logging in');
-        
+            
     },
     
 
 
 
     async logout(req,res){
-
+try {
+    
     req.session.user={};
     req.session.isLoggedIn=false;
     res.send('logged out succesfully');
+} catch (error) {
+    console.Error(Error);
+            res.send('something went wrong')
+}
 }
     
 
