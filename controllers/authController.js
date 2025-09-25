@@ -50,7 +50,7 @@ module.exports = {
 
     
     async login (req,res){
-        
+    
         
         let {email,password}=req.body;
         
@@ -79,8 +79,17 @@ module.exports = {
 
         res.send('logging in');
         
-    } 
+    },
     
+
+
+
+    async logout(req,res){
+
+    req.session.user={};
+    req.session.isLoggedIn=false;
+    res.send('logged out succesfully');
+}
     
 
 }

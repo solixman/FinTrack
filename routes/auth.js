@@ -13,10 +13,11 @@ router.post('/register',(req,res)=>{
 router.post('/login',(req,res)=>{
 
   authController.login(req,res)
-
+  
 });
 router.get('/logout',(req,res)=>{
-
+  
+  authController.logout(req,res)
 });
 
 router.get('/current',(req,res)=>{
