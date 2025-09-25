@@ -13,19 +13,19 @@ module.exports = {
             let { name, email, password, passwordConfirmation } = req.body;
 
             if (!name || !email || !password) {
-                throw new error("name, email, and password required");
+                throw new Error("name, email, and password required");
             }
             if (password !== passwordConfirmation) {
-                throw new error("passwords are not the same");
+                throw new Error("passwords are not the same");
             }
             if (password.length < 8) {
-                throw new error("Password must be at least 8 characters");
+                throw new Error("Password must be at least 8 characters");
             }
 
             const existing = await User.findOne({ where: { email: email } });
 
             if (existing) {
-                throw new error('email already exists');
+                throw new Error('email already exists');
             }
 
 
@@ -33,14 +33,13 @@ module.exports = {
             const hash = await bcrypt.hash(password, salt);
             let user = await User.create({ name: name, email: email, password: hash });
 
-            req.session.user = user;
+            req.session.user = {id:user.id,name:user.name,email:user.email};
             req.session.isLoggedIn = true
 
-              console.log(user);
             res.send('registered and logged in');
             
-        } catch (error) {
-            console.error(error);
+        } catch (Error) {
+            console.Error(Error);
             res.send('what now')
 
         }
@@ -61,17 +60,23 @@ module.exports = {
         
         let user= await  User.findOne({where:{email:email}});
         if(!user){
-            throw new error("email is not in our system");
+            throw new Error("email is not in our system");
         }
         
-        console.log(password,user.password);
         
         
         const   isRight= await bcrypt.compare(password,user.password);
         
-        console.log(isRight);
+        if(!isRight){
+        throw new Error("password or email incorrect");
+        }
+      
+      
+
+        req.session.user= {id:user.id,name:user.name,email:user.email}
+        req.session.isLoggedIn=true;
         
-        
+
         res.send('logging in');
         
     } 

@@ -4,9 +4,10 @@ const router= express.Router()
 
 
 router.get('/', (req,res)=>{
-    
-   req.session.user
-    res.send( req.session.user);
+
+//  console.log(req.session.user)
+        console.log(req.session)
+        res.send('hereeeee');
 
 });
 

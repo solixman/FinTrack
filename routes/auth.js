@@ -11,7 +11,7 @@ router.post('/register',(req,res)=>{
 }); 
 
 router.post('/login',(req,res)=>{
-console.log('ihhiiiiiiiii')
+
   authController.login(req,res)
 
 });
@@ -19,8 +19,12 @@ router.get('/logout',(req,res)=>{
 
 });
 
-router.get('/me',(req,res)=>{
-
+router.get('/current',(req,res)=>{
+  user=req.session.user;
+  console.log(user);
+  console.log(req.session.isLoggedIn);
+  
+  res.send('in current user');
 });
 router.get('/forgotPassword',(req,res)=>{
 

@@ -11,6 +11,8 @@ app.use(express.urlencoded({ extended : true }));
 app.use(express.json())
 app.use(session(sessionConfig));
 
+
+
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const authViewsRouter = require('./routes/authViews');
@@ -18,11 +20,6 @@ const authViewsRouter = require('./routes/authViews');
 app.use('/users',userRouter)
 app.use('/auth',authRouter)
 app.use(authViewsRouter)
-
-
-
-
-
 
 
 
