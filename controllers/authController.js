@@ -37,7 +37,7 @@ module.exports = {
             req.session.isLoggedIn = true
 
             res.send('registered and logged in');
-            
+               res.render('../views/dashboard',{name:user.name})
         } catch (Error) {
             console.Error(Error);
             res.send('something went wrong')
@@ -75,9 +75,8 @@ module.exports = {
             
             req.session.user= {id:user.id,name:user.name,email:user.email}
             req.session.isLoggedIn=true;
-            
-            
-            res.send('logging in');
+            console.log(user)
+             res.render('../views/dashboard',{name:user.name})
             
         } catch (error) {
             console.Error(Error);
@@ -87,14 +86,11 @@ module.exports = {
     },
     
 
-
-
     async logout(req,res){
 try {
     
     req.session.user={};
     req.session.isLoggedIn=false;
-    res.send('logged out succesfully');
 } catch (error) {
     console.Error(Error);
             res.send('something went wrong')
