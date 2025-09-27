@@ -21,16 +21,16 @@ module.exports = {
                 return res.redirect('/register')
             }
             if (password.length < 8) {
-                req.flash('error',"password needes to be more than 8 characters");  
-                 return res.redirect('/register')
-                 
+                req.flash('error', "password needes to be more than 8 characters");
+                return res.redirect('/register')
+
             }
 
             const existing = await User.findOne({ where: { email: email } });
 
             if (existing) {
-                 req.flash('error',"email already registered");  
-                 return res.redirect('/register')
+                req.flash('error', "email already registered");
+                return res.redirect('/register')
             }
 
 
@@ -41,12 +41,13 @@ module.exports = {
             req.session.user = { id: user.id, name: user.name, email: user.email };
             req.session.isLoggedIn = true
 
-            
-           return  res.render('../views/dashboard', { name: user.name })
+
+            return res.render('../views/dashboard', { name: user.name })
         } catch (error) {
             console.log(error);
-            req.flash("error",error);
-             return res.redirect('/register')
+            req.flash('error', "something went wrong");
+
+            return res.redirect('/register')
         }
 
 
@@ -61,12 +62,14 @@ module.exports = {
             let { email, password } = req.body;
 
             if (!email || !password) {
-                throw new Error("email and password required");
+                req.flash('error', "password and email required");
+                return res.redirect('/login')
             }
 
             let user = await User.findOne({ where: { email: email } });
             if (!user) {
-                throw new Error("email is not in our system");
+                req.flash('error', "this email is not registered ");
+                return res.redirect('/login')
             }
 
 
@@ -74,7 +77,8 @@ module.exports = {
             const isRight = await bcrypt.compare(password, user.password);
 
             if (!isRight) {
-                throw new Error("password or email incorrect");
+                req.flash('error', "wrong credentials");
+                return res.redirect('/login')
             }
 
 
@@ -85,8 +89,8 @@ module.exports = {
             res.render('../views/dashboard', { name: user.name })
 
         } catch (error) {
-            console.log(error);
-            res.send('something went wrong')
+            req.flash('error', "something went wrong");
+            return res.redirect('/login')
         }
 
     },
@@ -98,7 +102,7 @@ module.exports = {
             req.session.user = {};
             req.session.isLoggedIn = false;
         } catch (error) {
-            console.Error(Error);
+           req.flash('error',"something went wrong");  
             res.send('something went wrong')
         }
     }
