@@ -21,7 +21,7 @@ module.exports = {
                 return res.redirect('/register')
             }
             if (password.length < 8) {
-                req.flash('error',"password is too small");  
+                req.flash('error',"password needes to be more than 8 characters");  
                  return res.redirect('/register')
                  
             }
@@ -29,7 +29,7 @@ module.exports = {
             const existing = await User.findOne({ where: { email: email } });
 
             if (existing) {
-                 req.flash('error',"passw");  
+                 req.flash('error',"email already registered");  
                  return res.redirect('/register')
             }
 
@@ -45,7 +45,8 @@ module.exports = {
            return  res.render('../views/dashboard', { name: user.name })
         } catch (error) {
             console.log(error);
-            res.send('something went wrong')
+            req.flash("error",error);
+             return res.redirect('/register')
         }
 
 
