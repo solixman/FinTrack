@@ -4,7 +4,7 @@ const router= express.Router()
 
 router.get('/register',(req,res)=>{
   
-    res.render('../views/register.ejs')
+    res.render('../views/register.ejs',{ error : req.flash('error')})
 
 }); 
 
