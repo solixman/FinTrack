@@ -42,7 +42,7 @@ module.exports = {
             req.session.isLoggedIn = true
 
 
-            return res.render('../views/dashboard', { name: user.name })
+            return res.redirect('/dashboard')
         } catch (error) {
             console.log(error);
             req.flash('error', "something went wrong");
@@ -72,9 +72,9 @@ module.exports = {
                 return res.redirect('/login')
             }
 
-
-
             const isRight = await bcrypt.compare(password, user.password);
+
+
 
             if (!isRight) {
                 req.flash('error', "wrong credentials");
@@ -86,7 +86,7 @@ module.exports = {
             req.session.user = { id: user.id, name: user.name, email: user.email }
             req.session.isLoggedIn = true;
             console.log(user)
-            res.render('../views/dashboard', { name: user.name })
+            return res.redirect('/dashboard')
 
         } catch (error) {
             req.flash('error', "something went wrong");
@@ -102,7 +102,7 @@ module.exports = {
             req.session.user = {};
             req.session.isLoggedIn = false;
         } catch (error) {
-           req.flash('error',"something went wrong");  
+            req.flash('error', "something went wrong");
             res.send('something went wrong')
         }
     }

@@ -6,6 +6,7 @@ const session = require('express-session');
 const sessionConfig = require('./config/session');
 const flash=require("connect-flash");
 const router= express.Router();
+app.use(express.json());
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended : true }));
@@ -16,11 +17,15 @@ app.use(flash());
 
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-const authViewsRouter = require('./routes/authViews');
+const ViewsRouter = require('./routes/Views');
+const transactionRouter = require('./routes/transaction')
+const categoryRouter = require('./routes/category')
 
-app.use('/users',userRouter)
-app.use('/auth',authRouter)
-app.use(authViewsRouter)
+app.use('/users',userRouter);
+app.use('/auth',authRouter);
+app.use(ViewsRouter);
+app.use(transactionRouter)
+app.use(categoryRouter);
 
 
 

@@ -9,19 +9,14 @@ router.get('/register',(req,res)=>{
 }); 
 
 router.get('/login',(req,res)=>{
- res.render('../views/login.ejs');
-});
-router.get('/logout',(req,res)=>{
-
+ res.render('../views/login.ejs',{ error : req.flash('error')});
 });
 
-router.get('/me',(req,res)=>{
+router.get('/dashboard',(req,res)=>{
+// user= req.session.user;
 
-});
-
-
-router.get('changePassword',(req,res)=>{
+    res.render('../views/dashboard', {  error:req.flash('error')});
 
 });
 
-module.exports = router;
+module.exports=router
