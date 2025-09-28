@@ -55,7 +55,7 @@ module.exports = {
 
     },
 
-    async edit(req, res) {
+    async update(req, res) {
 
 
         try {
@@ -83,10 +83,5 @@ module.exports = {
             console.log(error);
             return res.redirect(req.get('referer') || '/dashboard');
         }
-
-
     }
-
-
-
 }
