@@ -36,22 +36,57 @@ module.exports = {
     async delete(req, res) {
 
         try {
-          id = req.params.id;
+            id = req.params.id;
             const id = req.body.id;
-            
-             Transaction.destroy({where:{
-                id:id
-             }});
 
+            Transaction.destroy({
+                where: {
+                    id: id
+                }
+            });
 
-    return res.send('deleted succesfully')
-} catch (error) {
-
+            req.flash('message', "transaction updated successfully");
+            return res.redirect(req.get('referer') || '/dashboard');
+        } catch (error) {
+            req.flash('error', "something went wrong");
+            console.log(error);
+            return res.redirect(req.get('referer') || '/dashboard');
         }
 
     },
 
+    async edit(req, res) {
 
-    
+
+        try {
+
+            const { amount, type, categoryId, date, note } = req.body;
+
+
+            const id = req.params.id;
+            let transaction = await Transaction.findByPk(id);
+            if (!transaction) {
+                req.flash('message', "transaction doesn't exist");
+                return res.redirect(req.get('referer') || '/dashboard');
+            }
+
+            transaction.amount = amount;
+            transaction.type = type;
+            transaction.categoryId = categoryId;
+            transaction.date = date;
+            transaction.note = note;
+            await transaction.save();
+            req.flash('message', "transaction updated successfully");
+            return res.redirect(req.get('referer') || '/dashboard');
+        } catch (error) {
+            req.flash('error', "something went wrong");
+            console.log(error);
+            return res.redirect(req.get('referer') || '/dashboard');
+        }
+
+
+    }
+
+
 
 }
