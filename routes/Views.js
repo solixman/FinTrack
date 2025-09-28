@@ -12,7 +12,7 @@ router.get('/login',(req,res)=>{
 
 router.get('/dashboard',(req,res)=>{
     res.render('../views/dashboard', {error:req.flash('error'),message:req.flash('message')});
-
+    
 });
 
 module.exports=router
