@@ -12,6 +12,7 @@
 
 <body style="background-color: rgb(237, 181, 161);">
 
+    <h1>finTrack</h1>
     <% if(error.length>0){ %>
 
         <div class="alert alert-danger" role="alert">
@@ -19,7 +20,13 @@
         </div>
 
         <% }%>
-    <h1>finTrack</h1>
+    <% if(message.length>0){ %>
+
+        <div class="alert alert-danger" role="alert">
+            <% message %>
+        </div>
+
+        <% }%>
             <section>
                 <div class="col-m-4">
 

@@ -17,7 +17,7 @@ app.use(flash());
 
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-const ViewsRouter = require('./routes/Views');
+const ViewsRouter = require('./routes/views');
 const transactionRouter = require('./routes/transaction')
 const categoryRouter = require('./routes/category')
 

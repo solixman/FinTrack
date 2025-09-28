@@ -25,7 +25,8 @@ module.exports = {
 
          await Transaction.create({ userId:user.id, amount:amount,date:date,type:type,categoryId:categoryId})
 
-            res.send('hiiiii');
+         req.flash('message','transaction created succesfully');
+         return res.redirect(req.get('referer') || '/dashboard');
         } catch (error) {
             req.flash('error', 'something went wrong');
             console.log(error);
