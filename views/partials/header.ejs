@@ -1,6 +1,21 @@
 <header class="header">
-  <h1>FinSolutions</h1>
-  <% if (user) { %>
-    <div>Welcome, <%= user.name %></div>
-  <% } %>
+    <% if(error.length>0){ %>
+
+        <div class="alert alert-danger" role="alert">
+            <%=error || "something went wrong" %>
+        </div>
+
+        <% }%>
+            <% if(message.length>0){ %>
+
+                <div class="alert alert-success" role="alert">
+                    <%= message || "task done succesfully" %>
+                </div>
+
+                <% }%>
+                    <h1>FinSolutions</h1>
+                    <% if (user) { %>
+                        <div>Welcome, <%= user.name %>
+                        </div>
+                        <% } %>
 </header>

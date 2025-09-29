@@ -1,9 +1,0 @@
-<h2>Dashboard</h2>
-<p>Your current balance: <%= balance %> <%= currency %></p>
-
-<h3>Recent Transactions</h3>
-<ul>
-  <% transactions.forEach(t => { %>
-    <li><%= t.category %>: <%= t.amount %> on <%= t.date %></li>
-  <% }) %>
-</ul>
