@@ -18,8 +18,5 @@ router.get('/dashboard', async (req, res) => {
    dashboardController.renderDashboard(req,res);
 });
 
-router.get('/transaction', async (req, res) => {
-   dashboardController.index(req,res);
-});
 
 module.exports = router

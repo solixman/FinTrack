@@ -15,6 +15,11 @@ router.route('/transaction/:id').delete((req,res)=>{
     transactionController.update(req,res);
 })
 
+router.get('/transactions', async (req, res) => {
+   transactionController.index(req,res);
+});
+
+
 
 module.exports = router;
 
