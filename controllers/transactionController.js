@@ -39,10 +39,10 @@ module.exports = {
     async create(req, res) {
 
         try {
-            let user = req.session.user;
-             return res.send('here');
+            let user = await User.findByPk(req.session.user.id);
+            
             const { amount, type, categoryId, date, note } = req.body;
-
+            
             if (!amount, !type, !categoryId) {
                 req.flash('error', "amount, type, category and Date are all needed");
                 return res.redirect('back');
@@ -50,9 +50,21 @@ module.exports = {
             if (!note) {
                 const note = "no note available";
             }
+            if(type =='income'){
+                user.balance+=amount;
+            }else{
+                user.balance-=amount;
+            }
+
+            user.save();
+
+
+
+
+
 
             await Transaction.create({ userId: user.id, amount: amount, date: date, type: type, categoryId: categoryId })
-
+            
             req.flash('message', "transaction created succesfully");
             return res.redirect(req.get('referer') || '/dashboard');
 
