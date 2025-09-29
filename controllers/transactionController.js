@@ -6,7 +6,16 @@ module.exports = {
 
     async index(req,res) {
         
-        usre
+        const user = await User.findByPk(req.session.user.id);
+        const transactions = await Transaction.findAll( {where:{
+          id:user.id,}})
+
+
+        const transactionsHTML =await require(ejs).renderFile(__dirname,'/../views/pages/transactions.ejs',{
+            user,
+            transactions
+        })
+
             res.render('../views/index.ejs', {
                 error: req.flash('error'),
                 message: req.flash('message'),
@@ -14,6 +23,7 @@ module.exports = {
                 user,
                 body: transactionsHTML
             });
+
     },
 
 
