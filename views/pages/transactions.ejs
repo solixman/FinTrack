@@ -1,0 +1,20 @@
+<h2>Transactions</h2>
+<a href="/transactions/new" class="btn btn-primary">Add Transaction</a>
+<table>
+  <thead>
+    <tr><th>Date</th><th>Category</th><th>Amount</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    <% transactions.forEach(t => { %>
+      <tr>
+        <td><%= t.date %></td>
+        <td><%= t.category %></td>
+        <td><%= t.amount %></td>
+        <td>
+          <a href="/transactions/edit/<%= t.id %>">Edit</a>
+          <a href="/transactions/delete/<%= t.id %>">Delete</a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
