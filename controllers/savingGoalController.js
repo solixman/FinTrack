@@ -21,9 +21,9 @@ module.exports = {
             req.flash('error', "something went wrong");
             return res.redirect(req.get('referer') || '/dashboard');
         }
-
-
     }
+
+ 
 
 
 }
