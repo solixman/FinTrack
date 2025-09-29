@@ -1,6 +1,8 @@
 const { render } = require('ejs');
-const { User} = require('../models')
-const transactionController=require('../controllers/transactionController');
+const { User } = require('../models')
+const transactionController = require('../controllers/transactionController');
+const savingGoalController = require('../controllers/savingGoalController');
+const budgetController = require('../controllers/budgetController');
 
 module.exports = {
 
@@ -11,12 +13,16 @@ module.exports = {
         try {
             const user = await User.findByPk(req.session.user.id);
 
-            let transactions = await transactionController.getTransactions(user.id,5);
+            let transactions = await transactionController.getTransactions(user.id, 5);
+            let savingGoals = await savingGoalController.getSavingGoals(user.id, 5);
+            let budgets = await budgetController.getBudgets(user.id, 5);
 
 
             const dashboardHTML = await require('ejs').renderFile(__dirname + '/../views/pages/dashboard.ejs', {
                 user,
-                transactions
+                transactions,
+                savingGoals,
+                budgets
             });
 
             res.render('../views/index.ejs', {
@@ -32,11 +38,5 @@ module.exports = {
             console.log(error);
             return res.send('something went wrong')
         }
-
     },
-
-
-   
-
-
 }

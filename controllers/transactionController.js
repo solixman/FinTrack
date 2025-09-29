@@ -17,8 +17,6 @@ module.exports = {
                 categories
             });
 
-
-
             return res.render('../views/index.ejs', {
                 error: req.flash('error'),
                 message: req.flash('message'),
@@ -26,9 +24,7 @@ module.exports = {
                 user,
                 body: transactionsHTML
             });
-
-
-
+            
         } catch (error) {
             req.flash('error', "something went wrong");
             console.log(error);

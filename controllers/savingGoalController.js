@@ -21,9 +21,31 @@ module.exports = {
             req.flash('error', "something went wrong");
             return res.redirect(req.get('referer') || '/dashboard');
         }
-    }
+    },
 
- 
+  async getSavingGoals(id, limit = 'undefined') {
+        try {
+
+            if (limit = 'undefined') {
+
+                return await SavingGoal.findAll({
+                    where: { userId: id },
+                    order: [['createdAt', 'DESC']],
+                });
+            } else {
+                return await SavingGoal.findAll({
+                    where: { userId: id },
+                    order: [['createdAt', 'DESC']],
+                    limit: 5
+                });
+            }
+
+        } catch (error) {
+            console.error(error);
+            throw new Error('Error fetching savingGoals');
+        }
+
+    }
 
 
 }
