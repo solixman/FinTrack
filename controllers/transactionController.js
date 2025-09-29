@@ -20,7 +20,7 @@ module.exports = {
             return res.render('../views/index.ejs', {
                 error: req.flash('error'),
                 message: req.flash('message'),
-                title: 'dashboard',
+                title: 'Transactions',
                 user,
                 body: transactionsHTML
             });
