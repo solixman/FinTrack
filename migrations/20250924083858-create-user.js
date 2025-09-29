@@ -22,8 +22,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      currency: {
+      balance: {
         type: Sequelize.FLOAT,
+        defaultValue:0,
       },
       preferences: {
         type: Sequelize.TEXT

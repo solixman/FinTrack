@@ -36,7 +36,7 @@ module.exports = {
 
             const salt = await bcrypt.genSalt(10);
             const hash = await bcrypt.hash(password, salt);
-            let user = await User.create({ name: name, email: email, password: hash });
+            let user = await User.create({ name: name, email: email, password: hash,balance:0});
 
             req.session.user = { id: user.id, name: user.name, email: user.email };
             req.session.isLoggedIn = true

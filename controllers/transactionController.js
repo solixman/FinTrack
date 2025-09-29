@@ -3,6 +3,21 @@ const { User, Transaction } = require('../models')
 module.exports = {
 
 
+
+    async index(req,res) {
+        
+        usre
+            res.render('../views/index.ejs', {
+                error: req.flash('error'),
+                message: req.flash('message'),
+                title: 'dashboard',
+                user,
+                body: transactionsHTML
+            });
+    },
+
+
+
     async create(req, res) {
 
         try {

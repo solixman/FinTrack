@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,
       },
       status: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         defaultValue:'ongoing'
       },
       targetDate: {

@@ -20,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    currency: DataTypes.FLOAT,
+    balance:{
+      type:DataTypes.FLOAT,
+      defaultValue:0,
+    },
     preferences: DataTypes.TEXT,
   }, {
     sequelize,
