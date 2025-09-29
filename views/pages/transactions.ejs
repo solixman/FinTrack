@@ -20,21 +20,23 @@
           </tr>
         </thead>
         <tbody>
-          <% if (transactions && transactions.length > 0) { %>
+          <% if (transactions.length > 0) { %>
             <% transactions.forEach(t => { %>
               <tr>
-                <td><%= new Date(t.date).toLocaleDateString() %></td>
-                <td><%= t.amount %></td>
+                <td><%= t.date %></td>
+                <td><%= t.category %></td>
                 <td>
-                  <span class="badge <%= t.type === 'income' ? 'bg-success' : 'bg-danger' %>">
-                    <%= t.type %>
-                  </span>
+                  <% if (t.amount < 0) { %>
+                    <span class="text-danger fw-bold"><%= t.amount %></span>
+                  <% } else { %>
+                    <span class="text-success fw-bold"><%= t.amount %></span>
+                  <% } %>
                 </td>
               </tr>
             <% }) %>
           <% } else { %>
             <tr>
-              <td colspan="3" class="text-center text-muted">No transactions yet.</td>
+              <td colspan="3" class="text-center text-muted py-3">No transactions found.</td>
             </tr>
           <% } %>
         </tbody>

@@ -1,5 +1,6 @@
 const { render } = require('ejs');
-const { User, Transaction } = require('../models')
+const { User} = require('../models')
+const transactionController=require('../controllers/transactionController');
 
 module.exports = {
 
@@ -10,7 +11,7 @@ module.exports = {
         try {
             const user = await User.findByPk(req.session.user.id);
 
-            let transactions = await this.getTransactions(user.id);
+            let transactions = await transactionController.getTransactions(user.id,5);
 
 
             const dashboardHTML = await require('ejs').renderFile(__dirname + '/../views/pages/dashboard.ejs', {
@@ -35,22 +36,7 @@ module.exports = {
     },
 
 
-    async getTransactions(id) {
-        try {
-
-            return await Transaction.findAll({
-                where: { userId: id },
-                order: [['createdAt', 'DESC']],
-                limit: 5
-            });
-
-        } catch (error) {
-            console.error(error);
-            throw new Error('Error fetching transactions');
-        }
-
-    }
-
+   
 
 
 }
