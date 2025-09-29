@@ -1,4 +1,4 @@
-const { User, Transaction } = require('../models')
+const { Category, User, Transaction } = require('../models')
 
 module.exports = {
 
@@ -10,11 +10,13 @@ module.exports = {
             const user = await User.findByPk(req.session.user.id);
             const transactions = await Transaction.findAll( {where:{
                 id:user.id,}})
+                const categories =await  Category.findAll();
                 
                 
-                const transactionsHTML = await require('ejs').renderFile(__dirname+'/../views/pages/transactions.ejs',{
+                const transactionsHTML = await require('ejs').renderFile(__dirname + '/../views/pages/transactions.ejs',{
                     user,
-                    transactions
+                    transactions,
+                    categories
                 })
                 
                 return  res.render('../views/index.ejs', {
@@ -38,7 +40,7 @@ module.exports = {
 
         try {
             let user = req.session.user;
-
+             return res.send('here');
             const { amount, type, categoryId, date, note } = req.body;
 
             if (!amount, !type, !categoryId) {
