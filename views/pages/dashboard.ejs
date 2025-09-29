@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <!-- Title -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Dashboard</h2>
+    <a href="/transactions/new" class="btn btn-primary">➕ Add Transaction</a>
+  </div>
+
+  <!-- Balance Card -->
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card text-white bg-success shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Current Balance</h5>
+          <p class="card-text fs-3 fw-bold"><%= balance %> <%= currency %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Transactions -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-light">
+      <h5 class="mb-0">Recent Transactions</h5>
+    </div>
+    <div class="card-body p-0">
+      <table class="table table-hover table-striped mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Category</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (transactions.length > 0) { %>
+            <% transactions.forEach(t => { %>
+              <tr>
+                <td><%= t.date %></td>
+                <td><%= t.category %></td>
+                <td>
+                  <% if (t.amount < 0) { %>
+                    <span class="text-danger fw-bold"><%= t.amount %></span>
+                  <% } else { %>
+                    <span class="text-success fw-bold"><%= t.amount %></span>
+                  <% } %>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="3" class="text-center text-muted py-3">No transactions found.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
