@@ -22,7 +22,7 @@ module.exports = {
                 user,
                 transactions,
                 savingGoals,
-                budgets
+                budgets,
             });
 
             res.render('../views/index.ejs', {
