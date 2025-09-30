@@ -2,7 +2,7 @@ const { render } = require('ejs');
 const { User } = require('../models')
 const transactionController = require('../controllers/transactionController');
 const savingGoalController = require('../controllers/savingGoalController');
-const budgetController = require('../controllers/budgetController');
+const categoryController = require('../controllers/categoryController');
 
 module.exports = {
 
@@ -15,16 +15,14 @@ module.exports = {
 
             let transactions = await transactionController.getTransactions(user.id, 5);
             let savingGoals = await savingGoalController.getSavingGoals(user.id, 5);
-            let budgets = await budgetController.getBudgets(user.id, 5);
+            let categories = await categoryController.getBudgetsAndCategories(user.id);
 
-
-            return res.send(budgets);
 
             const dashboardHTML = await require('ejs').renderFile(__dirname + '/../views/pages/dashboard.ejs', {
                 user,
                 transactions,
                 savingGoals,
-                budgets,
+                categories,
             });
 
 

@@ -1,4 +1,4 @@
-const { Category } = require('../models')
+const { Budget, Category } = require('../models')
 
 
 module.exports = {
@@ -20,22 +20,41 @@ module.exports = {
 
     },
 
-    async getBudgetsAndCategories(userId) {
+    async index(userId, limit = "undefined") {
         try {
-            
-            const categories = await Category.findAll({
-                include: [
-                    {
-                        model: Budget,
-                        where: { userId },
-                        required: false, 
-                        limit: 1, 
-                        order: [['createdAt', 'DESC']], 
-                    }
-                ]
-            });
 
-            return categories;
+            if (limit === "undefined") {
+
+
+
+                const categories = await Category.findAll({
+                    include: [
+                        {
+                            model: Budget,
+                            where: { userId },
+                            required: false,
+                            limit: 1,
+                            order: [['createdAt', 'DESC']],
+                        }
+                    ],
+                });
+                return categories;
+            } else {
+                const categories = await Category.findAll({
+                    include: [
+                        {
+                            model: Budget,
+                            where: { userId },
+                            required: false,
+                            limit: 1,
+                            order: [['createdAt', 'DESC']],
+                        }
+                    ],
+                });
+                return categories;
+            }
+
+
         } catch (error) {
             console.error(error);
             throw error;
