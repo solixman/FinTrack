@@ -1,10 +1,10 @@
-const { Budget }=require('../models');
+const { Budget } = require('../models');
 
 
-module.exports={
+module.exports = {
 
 
-     async getBudgets(id, limit = 'undefined') {
+    async getBudgets(id, limit = 'undefined') {
         try {
 
             if (limit = 'undefined') {

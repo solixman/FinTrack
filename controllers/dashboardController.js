@@ -18,12 +18,15 @@ module.exports = {
             let budgets = await budgetController.getBudgets(user.id, 5);
 
 
+            return res.send(budgets);
+
             const dashboardHTML = await require('ejs').renderFile(__dirname + '/../views/pages/dashboard.ejs', {
                 user,
                 transactions,
                 savingGoals,
                 budgets,
             });
+
 
             res.render('../views/index.ejs', {
                 error: req.flash('error'),
