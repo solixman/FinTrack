@@ -1,86 +1,44 @@
 <div class="container mt-4">
   <h2 class="mb-3">Saving Goals</h2>
 
-  
-  <form action="/saving-goals/create" method="POST" class="mb-4">
+  <form action="/savingGoal/create" method="POST" class="mb-4">
     <div class="row g-3 align-items-center">
+      <!-- Target Amount -->
       <div class="col-md-3">
         <label class="form-label">Target Amount</label>
         <input type="number" name="targetAmount" class="form-control" required>
       </div>
+
+      <!-- Current Amount -->
       <div class="col-md-3">
         <label class="form-label">Current Amount</label>
         <input type="number" name="currentAmount" class="form-control" value="0" required>
       </div>
+
+      <!-- Target Date -->
       <div class="col-md-3">
         <label class="form-label">Target Date</label>
         <input type="date" name="targetDate" class="form-control" required>
       </div>
+
+      <!-- Purpose -->
       <div class="col-md-3">
-        <label class="form-label">Category</label>
-        <select name="categoryId" class="form-select" required>
-          <option value="" disabled selected>Select category</option>
-          <% categories.forEach(category => { %>
-            <option value="<%= category.id %>"><%= category.name %></option>
-          <% }) %>
-        </select>
+        <label class="form-label">Purpose</label>
+        <input type="text" name="purpose" class="form-control" placeholder="e.g. New Laptop" required>
       </div>
     </div>
+
+  <div class="mt-3">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" name="takeFromBalance" id="fromBalanceYes" value="yes">
+    <label class="form-check-label" for="fromBalanceYes">
+      Take current amount from my balance
+    </label>
+  </div>
+</div>
+
     <div class="mt-3">
       <button type="submit" class="btn btn-primary">Add Goal</button>
     </div>
   </form>
-
-  <h4 class="mb-3">Your Goals</h4>
-  <% if (savingGoals && savingGoals.length > 0) { %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Target Amount</th>
-          <th>Current Amount</th>
-          <th>Target Date</th>
-          <th>Progress</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% savingGoals.forEach(goal => { %>
-          <tr>
-            <td>
-              <% 
-                const category = categories.find(c => c.id === goal.categoryId);
-                if (category) { %>
-                  <%= category.name %>
-              <% } else { %>
-                  -
-              <% } %>
-            </td>
-            <td><%= goal.targetAmount %></td>
-            <td><%= goal.currentAmount %></td>
-            <td><%= new Date(goal.targetDate).toLocaleDateString() %></td>
-            <td>
-              <% 
-                const progress = (goal.currentAmount / goal.targetAmount) * 100;
-              %>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" 
-                   
-                     aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
-                  <%= progress.toFixed(0) %>%
-                </div>
-              </div>
-            </td>
-            <td>
-              <form action="/saving-goals/delete/<%= goal.id %>" method="POST" style="display:inline;">
-                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-              </form>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  <% } else { %>
-    <p class="text-muted">You have no saving goals yet. Add one above 👆</p>
-  <% } %>
 </div>
