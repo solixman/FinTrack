@@ -1,4 +1,4 @@
-const { SavingGoal,User } = require('../models')
+const { Category,SavingGoal,User } = require('../models')
 
 module.exports = {
 

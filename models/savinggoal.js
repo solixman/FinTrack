@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     targetAmount: DataTypes.FLOAT,
     targetDate: DataTypes.DATE,
+    purpose:DataTypes.STRING,
     status:DataTypes.STRING,
     currentAmount: DataTypes.FLOAT
   }, {

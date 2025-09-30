@@ -1,15 +1,7 @@
 <div class="container mt-4">
   <h2 class="mb-3">Saving Goals</h2>
 
-  <!-- Flash messages -->
-  <% if (message && message.length > 0) { %>
-    <div class="alert alert-success"><%= message %></div>
-  <% } %>
-  <% if (error && error.length > 0) { %>
-    <div class="alert alert-danger"><%= error %></div>
-  <% } %>
-
-  <!-- Add New Saving Goal Form -->
+  
   <form action="/saving-goals/create" method="POST" class="mb-4">
     <div class="row g-3 align-items-center">
       <div class="col-md-3">
@@ -39,7 +31,6 @@
     </div>
   </form>
 
-  <!-- Existing Saving Goals -->
   <h4 class="mb-3">Your Goals</h4>
   <% if (savingGoals && savingGoals.length > 0) { %>
     <table class="table table-striped">

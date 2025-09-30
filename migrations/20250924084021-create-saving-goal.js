@@ -21,6 +21,10 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue:'ongoing'
       },
+      purpose:{
+         type: Sequelize.STRING,
+          allowNull: false,
+      },
       targetDate: {
         type: Sequelize.DATE,
       },
