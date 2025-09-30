@@ -1,8 +1,37 @@
-const { Budget, Category } = require('../models')
+const { User,Budget, Category } = require('../models')
 
 
 module.exports = {
 
+
+    async index(req,res){
+
+         try {
+            const user = await User.findByPk(req.session.user.id);
+            const categories = await this.getBudgetsAndCategories(user.id);
+
+            const CaBHTML = await require('ejs').renderFile(__dirname + '/../views/pages/categories&budgets.ejs', {
+                user,
+                categories
+            });
+
+            return res.render('../views/index.ejs', {
+                error: req.flash('error'),
+                message: req.flash('message'),
+                title: 'Transactions',
+                user,
+                body: CaBHTML
+            });
+            
+        } catch (error) {
+            req.flash('error', "something went wrong");
+            console.log(error);
+            return res.redirect(req.get('referer') || '/dashboard');
+        }
+
+
+
+    },
 
     async create(req, res) {
 
@@ -20,7 +49,7 @@ module.exports = {
 
     },
 
-    async index(userId, limit = "undefined") {
+    async getBudgetsAndCategories(userId, limit = "undefined") {
         try {
 
             if (limit === "undefined") {
