@@ -1,4 +1,4 @@
-const { Category,SavingGoal,User } = require('../models')
+const { Category, SavingGoal, User } = require('../models')
 
 module.exports = {
 
@@ -37,22 +37,44 @@ module.exports = {
     async create(req, res) {
         try {
             let id = req.session.user.id;
-            const { targetAmount, targetDate, currentAmount } = req.body;
+            const { targetAmount, targetDate, currentAmount, purpose, takeFromBalance } = req.body;
+            let user = await User.findByPk(id);
 
-            if (!targetAmount || !targetDate) {
-                req.flash('error', "Target amount and date are required");
-                return res.redirect(req.get('referer') || '/dashboard');
+            targetAmount = parseFloat(targetAmount);
+            currentAmount = parseFloat(currentAmount);
+
+            if (!targetAmount) {
+                req.flash('error', "Target amount are required");
+                return res.redirect(req.get('referer') || '/savingGoals');
             }
 
-            let savingGoal = await SavingGoal.create({ userId: id, targetAmount: targetAmount, currentAmount: currentAmount, targetDate: targetDate })
+
+            if (takeFromBalance === "yes" && currentAmount !== 0) {
+
+                if (currentAmount < user.balance) {
+                    user.balance -= currentAmount;
+                    user.save();
+                } else {
+                    req.flash('error', "if you wanna take from balance the current Amount should be smaller than the balance");
+                    return res.redirect(req.get('referer') || '/savingGoals');
+                    
+                }
+                
+            }
+            
+            await SavingGoal.create({ userId: id, targetAmount: targetAmount, purpose: purpose, currentAmount: currentAmount, targetDate: targetDate })
             req.flash('message', "Saving goal created successfully");
-            return res.redirect(req.get('referer') || '/dashboard');
+            return res.redirect(req.get('referer') || '/savingGoals');
 
         } catch (error) {
+
+            console.log(error);
             req.flash('error', "something went wrong");
-            return res.redirect(req.get('referer') || '/dashboard');
+            return res.redirect(req.get('referer') || '/savingGoals');
         }
     },
+
+
 
     async getSavingGoals(id, limit = 'undefined') {
         try {
