@@ -37,23 +37,22 @@ module.exports = {
     async create(req, res) {
         try {
             let id = req.session.user.id;
-            const { targetAmount, targetDate, currentAmount, purpose, takeFromBalance } = req.body;
+            let { targetAmount, targetDate, currentAmount, purpose, takeFromBalance } = req.body;
             let user = await User.findByPk(id);
-
             targetAmount = parseFloat(targetAmount);
             currentAmount = parseFloat(currentAmount);
-
+            
             if (!targetAmount) {
                 req.flash('error', "Target amount are required");
                 return res.redirect(req.get('referer') || '/savingGoals');
             }
-
-
+            
+            
             if (takeFromBalance === "yes" && currentAmount !== 0) {
-
+                
                 if (currentAmount < user.balance) {
                     user.balance -= currentAmount;
-                    user.save();
+                user.save();
                 } else {
                     req.flash('error', "if you wanna take from balance the current Amount should be smaller than the balance");
                     return res.redirect(req.get('referer') || '/savingGoals');
