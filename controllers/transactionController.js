@@ -37,7 +37,8 @@ module.exports = {
         try {
             let user = await User.findByPk(req.session.user.id);
 
-            const { amount, type, categoryId, date, note } = req.body;
+            let { amount, type, categoryId, date, note } = req.body;
+            amount = parseFloat(amount);
 
             if (!amount, !type, !categoryId) {
                 req.flash('error', "amount, type, category and Date are all needed");
@@ -72,8 +73,22 @@ module.exports = {
     async delete(req, res) {
 
         try {
-            const id = req.params.id;
 
+            const id = req.params.id;
+            
+            if (req.body.mode === 'undo') {
+                
+                let user = await User.findByPk(req.session.user.id);
+                let transaction =await Transaction.findByPk(id);
+                
+                if (transaction.type === "income") {
+                    user.balance -= transaction.amount;
+                } else {
+                    user.balance += transaction.amount;
+                }
+         
+               await user.save();
+            }
             Transaction.destroy({
                 where: {
                     id: id
@@ -94,8 +109,8 @@ module.exports = {
 
         try {
             let { amount, type, categoryId, date, note } = req.body;
-                  amount=parseFloat(amount);    
-    
+            amount = parseFloat(amount);
+
             const id = req.params.id;
 
             let transaction = await Transaction.findByPk(id);
@@ -104,8 +119,8 @@ module.exports = {
                 return res.redirect(req.get('referer') || '/dashboard');
             }
 
-            if(type!==transaction.type || amount !== amount.type){
-                await this.handelUserbalance(req.session.user.id,transaction, amount, type);
+            if (type !== transaction.type || amount !== amount.type) {
+                await this.handelUserbalance(req.session.user.id, transaction, amount, type);
             }
 
             transaction.amount = amount;
@@ -159,16 +174,16 @@ module.exports = {
                 user.balance += (transaction.amount + amount);
             }
         }
-        if(transaction.type === type){
+        if (transaction.type === type) {
 
-             if (transaction.type === "income") {
+            if (transaction.type === "income") {
                 user.balance = - transaction.amount + amount;
             } else {
-                user.balance =  transaction.amount - amount;
+                user.balance = transaction.amount - amount;
             }
 
         }
-    user.save();
+        user.save();
     }
 
 }
