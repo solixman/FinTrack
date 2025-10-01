@@ -54,7 +54,26 @@ module.exports = {
             return res.redirect(req.get('referer') || '//budgets-categories');
         }
 
-    }
+    },
+    
 
+    async delete(req, res) {
+
+        try {
+           const id = req.params.id;
+            Budget.destroy({
+                where: {
+                    id: id
+                }
+            });
+
+            req.flash('message', "Budget removed successfully");
+            return res.redirect(req.get('referer') || '/transactions');
+        } catch (error) {
+            req.flash('error', "something went wrong");
+            return res.redirect(req.get('referer') || '/transactions');
+        }
+
+    }
 
 }
