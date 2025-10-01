@@ -1,0 +1,65 @@
+<div class="container my-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+      <h4 class="mb-0">Profile</h4>
+    </div>
+    <div class="card-body">
+      <!-- User Info -->
+      <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9"><%= user.name %></dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9"><%= user.email %></dd>
+
+        <dt class="col-sm-3">Currency</dt>
+        <dd class="col-sm-9"><%= user.currency || 'Not set' %></dd>
+
+        <dt class="col-sm-3">Role</dt>
+        <dd class="col-sm-9"><%= user.roleId === 1 ? 'Admin' : 'User' %></dd>
+
+        <dt class="col-sm-3">Preferences</dt>
+        <dd class="col-sm-9"><%= user.preferences || 'No preferences set' %></dd>
+      </dl>
+
+      <!-- Change Password Button -->
+      <div class="mt-4">
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+          <i class="bi bi-key"></i> Change Password
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/user/change-password" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Old Password</label>
+            <input type="password" class="form-control" name="oldPassword" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">New Password</label>
+            <input type="password" class="form-control" name="newPassword" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Confirm New Password</label>
+            <input type="password" class="form-control" name="confirmPassword" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-warning">Update Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

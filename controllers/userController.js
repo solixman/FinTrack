@@ -10,8 +10,6 @@ module.exports= {
             let user = await User.findByPk(req.session.user.id); 
             
        const profileHTML = await require('ejs').renderFile(__dirname + '/../views/pages/profile.ejs', {
-                transactions,
-                categories
             });
             
             return res.render('../views/index.ejs', {
