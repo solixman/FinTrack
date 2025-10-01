@@ -1,43 +1,151 @@
-const { User, Transaction } = require('../models')
+const { Category, User, Transaction } = require('../models')
 
 module.exports = {
 
 
- async   create(req, res) {
-           
+
+    async index(req, res) {
+
         try {
-           let user=req.session.user;
-        
+            const user = await User.findByPk(req.session.user.id);
+            const transactions = await this.getTransactions(user.id)
+
+            const categories = await Category.findAll();
+            const transactionsHTML = await require('ejs').renderFile(__dirname + '/../views/pages/transactions.ejs', {
+                user,
+                transactions,
+                categories
+            });
+
+            return res.render('../views/index.ejs', {
+                error: req.flash('error'),
+                message: req.flash('message'),
+                title: 'Transactions',
+                user,
+                body: transactionsHTML
+            });
+            
+        } catch (error) {
+            req.flash('error', "something went wrong");
+            console.log(error);
+            return res.redirect(req.get('referer') || '/dashboard');
+        }
+    },
+
+
+
+    async create(req, res) {
+
+        try {
+            let user = await User.findByPk(req.session.user.id);
+
             const { amount, type, categoryId, date, note } = req.body;
 
             if (!amount, !type, !categoryId) {
                 req.flash('error', "amount, type, category and Date are all needed");
                 return res.redirect('back');
             }
-            
-           
-            
-            if(!note){
+            if (!note) {
                 const note = "no note available";
             }
-            
-        //    return res.send({ amount:amount,date:date,type:type,categoryId:categoryId})
+            if (type == 'income') {
+                user.balance += amount;
+            } else {
+                user.balance -= amount;
+            }
 
-         await Transaction.create({ userId:user.id, amount:amount,date:date,type:type,categoryId:categoryId})
+            user.save();
 
-         req.flash('message',"transaction created succesfully");
-         return res.redirect(req.get('referer') || '/dashboard');
+            await Transaction.create({ userId: user.id, amount: amount, date: date, type: type, categoryId: categoryId })
+
+            req.flash('message', "transaction created succesfully");
+            return res.redirect(req.get('referer') || '/transactions');
 
         } catch (error) {
 
-            req.flash('error',"something went wrong");
+            req.flash('error', "something went wrong");
+            console.log(error);
+            return res.redirect(req.get('referer') || '/transactions');
+        }
+    },
+
+
+
+    async delete(req, res) {
+
+        try {
+            id = req.params.id;
+            const id = req.body.id;
+
+            Transaction.destroy({
+                where: {
+                    id: id
+                }
+            });
+
+            req.flash('message', "transaction updated successfully");
+            return res.redirect(req.get('referer') || '/transactions');
+        } catch (error) {
+            req.flash('error', "something went wrong");
+            console.log(error);
+            return res.redirect(req.get('referer') || '/transactions');
+        }
+
+    },
+
+    async update(req, res) {
+
+
+        try {
+
+            const { amount, type, categoryId, date, note } = req.body;
+
+
+            const id = req.params.id;
+            let transaction = await Transaction.findByPk(id);
+            if (!transaction) {
+                req.flash('message', "transaction doesn't exist");
+                return res.redirect(req.get('referer') || '/dashboard');
+            }
+
+            transaction.amount = amount;
+            transaction.type = type;
+            transaction.categoryId = categoryId;
+            transaction.date = date;
+            transaction.note = note;
+            await transaction.save();
+            req.flash('message', "transaction updated successfully");
+            return res.redirect(req.get('referer') || '/dashboard');
+        } catch (error) {
+            req.flash('error', "something went wrong");
             console.log(error);
             return res.redirect(req.get('referer') || '/dashboard');
         }
+    },
 
-    
+
+    async getTransactions(id, limit = 'undefined') {
+        try {
+
+            if (limit = 'undefined') {
+
+                return await Transaction.findAll({
+                    where: { userId: id },
+                    order: [['createdAt', 'DESC']],
+                });
+            } else {
+                return await Transaction.findAll({
+                    where: { userId: id },
+                    order: [['createdAt', 'DESC']],
+                    limit: 5
+                });
+            }
+
+        } catch (error) {
+            console.error(error);
+            throw new Error('Error fetching transactions');
+        }
 
     }
-
 
 }

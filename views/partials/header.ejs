@@ -1,0 +1,23 @@
+<header class="header">
+
+    <% if(error.length>0){ %>
+
+        <div class="alert alert-danger" role="alert">
+            <%=error%>
+        </div>
+
+        <% }%>
+    <% if(message.length>0){ %>
+
+        <div class="alert alert-success" role="success">
+            <%=message%>
+        </div>
+
+        <% }%>
+
+
+            <% if (user) { %>
+                <div>Welcome, <%= user.name %>
+                </div>
+                <% } %>
+</header>

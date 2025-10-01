@@ -17,14 +17,21 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false,
       },
+      status: {
+        type: Sequelize.STRING,
+        defaultValue:'ongoing'
+      },
+      purpose:{
+         type: Sequelize.STRING,
+          allowNull: false,
+      },
       targetDate: {
         type: Sequelize.DATE,
-        
       },
       currentAmount: {
         type: Sequelize.FLOAT,
         allowNull: false,
-        defaultValue:0
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,

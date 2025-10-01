@@ -20,12 +20,16 @@ const authRouter = require('./routes/auth');
 const ViewsRouter = require('./routes/views');
 const transactionRouter = require('./routes/transaction')
 const categoryRouter = require('./routes/category')
+const savingGoalRouter = require('./routes/savingGoal')
+const budgetsRouter = require('./routes/budgets')
 
 app.use('/users',userRouter);
 app.use('/auth',authRouter);
 app.use(ViewsRouter);
 app.use(transactionRouter)
 app.use(categoryRouter);
+app.use(savingGoalRouter);
+app.use(budgetsRouter);
 
 
 

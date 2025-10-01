@@ -1,0 +1,126 @@
+<div class="container-fluid">
+  <!-- Page Title -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Dashboard</h2>
+    <span class="text-muted">Welcome, <%= user.name %></span>
+  </div>
+
+  <div class="row">
+    <!-- Balance Card -->
+    <div class="col-md-4 mb-4">
+      <div class="card text-white bg-success shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Current Balance</h5>
+          <p class="card-text fs-3 fw-bold"><%= user.balance %> MAD</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Recent Transactions -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Recent Transactions</h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-hover table-striped mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (transactions && transactions.length > 0) { %>
+                <% transactions.forEach(t => { %>
+                  <tr>
+                    <td><%= new Date(t.date).toLocaleDateString() %></td>
+                    <td><%= t.category ? t.category : "Uncategorized" %></td>
+                    <td>
+                      <% if (t.type === "expense") { %>
+                        <span class="text-danger fw-bold">-<%= t.amount %></span>
+                      <% } else { %>
+                        <span class="text-success fw-bold">+<%= t.amount %></span>
+                      <% } %>
+                    </td>
+                  </tr>
+                <% }) %>
+              <% } else { %>
+                <tr>
+                  <td colspan="3" class="text-center text-muted py-3">No transactions found.</td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saving Goals -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Saving Goals</h5>
+        </div>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush">
+            <% if (savingGoals && savingGoals.length > 0) { %>
+              <% savingGoals.forEach(goal => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span><%= goal.name || "Goal" %> - Target: <%= goal.targetAmount %> MAD</span>
+                  <span class="badge bg-primary">
+                    <%= goal.currentAmount %> / <%= goal.targetAmount %>
+                  </span>
+                </li>
+              <% }) %>
+            <% } else { %>
+              <li class="list-group-item text-center text-muted">No saving goals yet.</li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Budgets per Category -->
+  <div class="row">
+    <div class="col-12 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Budgets by Category</h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-hover table-striped mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th>Category</th>
+                <th>Limit</th>
+                <th>Spent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (categories && categories.length > 0) { %>
+                <% categories.forEach(cat => { %>
+                  <tr>
+                    <td><%= cat.name %></td>
+                    <td><%= cat.budget ? cat.budget.limitAmount : "Not Set" %> 
+                        <%= cat.budget ? "MAD" : "" %></td>
+                    <td><%= cat.budget ? (cat.budget.spentAmount || 0) : "-" %> 
+                        <%= cat.budget ? "MAD" : "" %></td>
+                  </tr>
+                <% }) %>
+              <% } else { %>
+                <tr>
+                  <td colspan="3" class="text-center text-muted py-3">No categories or budgets found.</td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
