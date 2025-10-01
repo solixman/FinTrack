@@ -75,9 +75,8 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    // Need to drop enums separately in PostgreSQL
+    
     await queryInterface.dropTable('Users');
-    await queryInterface.sequelize.query('DROP TYPE IF EXISTS "enum_Users_role";');
-    await queryInterface.sequelize.query('DROP TYPE IF EXISTS "enum_Users_status";');
+   
   }
 };
