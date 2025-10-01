@@ -9,10 +9,8 @@ module.exports = {
         try {
             const user = await User.findByPk(req.session.user.id);
             const transactions = await this.getTransactions(user.id)
-
             const categories = await Category.findAll();
             const transactionsHTML = await require('ejs').renderFile(__dirname + '/../views/pages/transactions.ejs', {
-                user,
                 transactions,
                 categories
             });
@@ -24,7 +22,7 @@ module.exports = {
                 user,
                 body: transactionsHTML
             });
-            
+
         } catch (error) {
             req.flash('error', "something went wrong");
             console.log(error);
@@ -74,8 +72,7 @@ module.exports = {
     async delete(req, res) {
 
         try {
-            id = req.params.id;
-            const id = req.body.id;
+            const id = req.params.id;
 
             Transaction.destroy({
                 where: {
@@ -83,7 +80,7 @@ module.exports = {
                 }
             });
 
-            req.flash('message', "transaction updated successfully");
+            req.flash('message', "transaction deleted successfully");
             return res.redirect(req.get('referer') || '/transactions');
         } catch (error) {
             req.flash('error', "something went wrong");
@@ -95,18 +92,21 @@ module.exports = {
 
     async update(req, res) {
 
-
         try {
-
-            const { amount, type, categoryId, date, note } = req.body;
-
-
+            let { amount, type, categoryId, date, note } = req.body;
+                  amount=parseFloat(amount);    
+    
             const id = req.params.id;
+
             let transaction = await Transaction.findByPk(id);
             if (!transaction) {
                 req.flash('message', "transaction doesn't exist");
                 return res.redirect(req.get('referer') || '/dashboard');
             }
+
+            
+            await this.handelUserbalance(req.session.user.id,transaction, amount, type)
+            
 
             transaction.amount = amount;
             transaction.type = type;
@@ -146,6 +146,29 @@ module.exports = {
             throw new Error('Error fetching transactions');
         }
 
+    },
+
+    async handelUserbalance(id, transaction, amount, type) {
+
+        let user = await User.findByPk(id);
+        if (transaction.type !== type) {
+
+            if (transaction.type === "income") {
+                user.balance -= (transaction.amount + amount);
+            } else {
+                user.balance += (transaction.amount + amount);
+            }
+        }
+        if(transaction.type === type){
+
+             if (transaction.type === "income") {
+                user.balance = - transaction.amount + amount;
+            } else {
+                user.balance =  transaction.amount - amount;
+            }
+
+        }
+    user.save();
     }
 
 }
