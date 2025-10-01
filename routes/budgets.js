@@ -9,5 +9,11 @@ budgetController.index(req.res);
 
 })
 
+router.post('/budgets/create',(req,res)=>{
+
+budgetController.create(req,res);
+
+})
+
 
 module.exports = router;
