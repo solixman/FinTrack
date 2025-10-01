@@ -16,6 +16,7 @@ app.use(flash());
 
 
 
+const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
 const ViewsRouter = require('./routes/views');
 const transactionRouter = require('./routes/transaction')
@@ -30,6 +31,7 @@ app.use(transactionRouter)
 app.use(categoryRouter);
 app.use(savingGoalRouter);
 app.use(budgetsRouter);
+app.use('/user',userRouter);
 
 
 
