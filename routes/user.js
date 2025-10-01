@@ -3,8 +3,13 @@ const router = express.Router();
 const UserController=require('../controllers/userController');
 
 
-router.get('/user/profile',(req,res)=>{
+router.get('/profile',(req,res)=>{
     UserController.Profile(req,res)
+
+});
+
+router.post('/update',(req,res)=>{
+    UserController.update(req,res)
 
 });
 

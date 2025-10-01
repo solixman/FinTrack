@@ -31,7 +31,7 @@ app.use(transactionRouter)
 app.use(categoryRouter);
 app.use(savingGoalRouter);
 app.use(budgetsRouter);
-app.use(userRouter);
+app.use('/user',userRouter);
 
 
 
