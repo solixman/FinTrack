@@ -104,9 +104,9 @@ module.exports = {
                 return res.redirect(req.get('referer') || '/dashboard');
             }
 
-            
-            await this.handelUserbalance(req.session.user.id,transaction, amount, type)
-            
+            if(type!==transaction.type || amount !== amount.type){
+                await this.handelUserbalance(req.session.user.id,transaction, amount, type);
+            }
 
             transaction.amount = amount;
             transaction.type = type;
