@@ -8,7 +8,7 @@
   const displayDob = user && user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString() : '—';
   const displayBalance = (user && user.balance != null) ? Number(user.balance).toFixed(2) : '0.00';
 %>
-
+ 
 <div class="card shadow-sm overflow-hidden">
   <div class="card-body p-4">
     <div class="d-flex align-items-center justify-content-between mb-4">
@@ -196,4 +196,39 @@
   </div>
 </div>
 
-<!-- Keep Change Password Modal the same -->
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <form id="changePasswordForm" action="/user/change-password" method="POST" novalidate>
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Old password</label>
+            <input name="oldPassword" type="password" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">New password</label>
+            <input id="newPassword" name="newPassword" type="password" class="form-control" minlength="8" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Confirm new password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" minlength="8" required>
+            <div class="invalid-feedback" id="passwordMismatchFeedback">Passwords do not match.</div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-warning">Update password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

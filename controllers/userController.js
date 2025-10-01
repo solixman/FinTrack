@@ -43,7 +43,7 @@ module.exports = {
             user.bio = bio;
             user.preferences = preferences;
             user.currency = currency;
-            user.currency = avatar;
+            user.avatar = avatar;
             
            await user.save();
 
