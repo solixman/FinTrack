@@ -16,5 +16,9 @@ categoryController.index(req,res);
 
 })
 
+router.get('/categories/delete/:id',(req,res)=>{
+    categoryController.delete(req,res);
+})
+
 
 module.exports = router

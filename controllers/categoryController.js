@@ -52,6 +52,32 @@ module.exports = {
     },
 
 
+     async delete(req, res) {
+
+        try {
+           const id = req.params.id;
+            Category.destroy({
+                where: {
+                    id: id
+                }
+            });
+
+            Budget.destroy({
+                 where: {
+                    CategoryId: id
+                }
+            })
+
+            req.flash('message', "category removed successfully");
+            return res.redirect(req.get('referer') || '/transactions');
+        } catch (error) {
+            req.flash('error', "something went wrong");
+            return res.redirect(req.get('referer') || '/transactions');
+        }
+
+    },
+
+
 
     async getBudgetsAndCategories(userId, limit = "undefined") {
         try {
