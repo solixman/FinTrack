@@ -10,6 +10,7 @@ module.exports= {
             let user = await User.findByPk(req.session.user.id); 
             
        const profileHTML = await require('ejs').renderFile(__dirname + '/../views/pages/profile.ejs', {
+        user
             });
             
             return res.render('../views/index.ejs', {
@@ -23,6 +24,7 @@ module.exports= {
             
         } catch (error) {
              req.flash('error', "something went wrong");
+             console.log(error);
             return res.redirect(req.get('referer') || '/dashboard');
         }
         }
