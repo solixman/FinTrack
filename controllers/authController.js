@@ -73,15 +73,10 @@ module.exports = {
             }
 
             const isRight = await bcrypt.compare(password, user.password);
-
-
-
             if (!isRight) {
                 req.flash('error', "wrong credentials");
                 return res.redirect('/login')
             }
-
-
 
             req.session.user = { id: user.id, name: user.name, email: user.email }
             req.session.isLoggedIn = true;

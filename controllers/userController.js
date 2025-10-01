@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const bcrypt = require('bcrypt');
 
 
 module.exports = {
@@ -32,7 +33,7 @@ module.exports = {
 
     async update(req, res) {
         try {
-            const { name, email, phoneNumber, address, dateOfBirth, bio, preferences, currency,avatar } = req.body;
+            const { name, email, phoneNumber, address, dateOfBirth, bio, preferences, currency, avatar } = req.body;
 
             let user = await User.findByPk(req.session.user.id);
             user.name = name
@@ -44,8 +45,8 @@ module.exports = {
             user.preferences = preferences;
             user.currency = currency;
             user.avatar = avatar;
-            
-           await user.save();
+
+            await user.save();
 
             req.flash('message', 'Profile updated successfully');
             res.redirect('/user/profile');
@@ -55,6 +56,36 @@ module.exports = {
             req.flash('error', 'Something went wrong');
             res.redirect('/user/profile');
         }
+    },
+
+    async changePassword(req, res) {
+        try {
+            const { confirmPassword, newPassword, oldPassword } = req.body;
+            let user = await User.findByPk(req.session.user.id)
+            
+            const isRight = await bcrypt.compare(oldPassword, user.password);
+            if (!isRight) {
+                req.flash('error', "wrong password");
+                return res.redirect(req.get('referer') || '/user/profile');
+            }
+            
+            if (confirmPassword !== newPassword) {
+                req.flash('error', "new passwords don't match");
+                return res.redirect(req.get('referer') || '/user/profile');
+            }
+            
+            const salt = await bcrypt.genSalt(10);
+            user.password = await bcrypt.hash(newPassword, salt);
+            await user.save();
+            req.flash('message', "password reintialized succesfully ");
+            return res.redirect(req.get('referer') || '/user/profile');
+            
+        } catch (error) {
+             req.flash('error', "something went wrong");
+            return res.redirect(req.get('referer') || '/user/profile');
+        }
+
+
     }
 
 

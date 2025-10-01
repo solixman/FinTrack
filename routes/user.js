@@ -12,5 +12,9 @@ router.post('/update',(req,res)=>{
     UserController.update(req,res)
 
 });
+router.post('/change-password',(req,res)=>{
+    UserController.changePassword(req,res)
+
+});
 
 module.exports = router
