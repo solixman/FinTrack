@@ -41,13 +41,17 @@ module.exports = {
             await Category.create({ name: name }, { description: description }, { type: type });
 
 
-            res.send('done')
+            req.flash('message', "category created succesfully ");
+            return res.redirect(req.get('referer') || '/budgets-categories');
         } catch (error) {
+           req.flash('error', "something went wrong");
             console.log(error);
-            res.send('something went wrong')
+            return res.redirect(req.get('referer') || '/budgets-categories');
         }
 
     },
+
+
 
     async getBudgetsAndCategories(userId, limit = "undefined") {
         try {

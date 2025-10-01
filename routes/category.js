@@ -2,7 +2,7 @@ const express = require('express');
 const router= express.Router()
 const categoryController=require('../controllers/categoryController')
 
-router.post('/category/create',(req,res)=>{
+router.post('/categories/create',(req,res)=>{
 
     categoryController.create(req,res);
 
