@@ -9,9 +9,11 @@ router.post('/transaction/create',(req,res)=>{
     transactionController.create(req,res);
 });
 
-router.route('/transaction/:id').delete((req,res)=>{
+router.post('/transaction/delete/:id',(req,res)=>{
     transactionController.delete(req,res);
-}).put((req,res)=>{
+})
+
+router.post('/transaction/update/:id',(req,res)=>{
     transactionController.update(req,res);
 })
 

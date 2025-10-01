@@ -41,13 +41,43 @@ module.exports = {
             await Category.create({ name: name }, { description: description }, { type: type });
 
 
-            res.send('done')
+            req.flash('message', "category created succesfully ");
+            return res.redirect(req.get('referer') || '/budgets-categories');
         } catch (error) {
+           req.flash('error', "something went wrong");
             console.log(error);
-            res.send('something went wrong')
+            return res.redirect(req.get('referer') || '/budgets-categories');
         }
 
     },
+
+
+     async delete(req, res) {
+
+        try {
+           const id = req.params.id;
+            Category.destroy({
+                where: {
+                    id: id
+                }
+            });
+
+            Budget.destroy({
+                 where: {
+                    CategoryId: id
+                }
+            })
+
+            req.flash('message', "category removed successfully");
+            return res.redirect(req.get('referer') || '/transactions');
+        } catch (error) {
+            req.flash('error', "something went wrong");
+            return res.redirect(req.get('referer') || '/transactions');
+        }
+
+    },
+
+
 
     async getBudgetsAndCategories(userId, limit = "undefined") {
         try {

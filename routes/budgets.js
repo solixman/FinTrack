@@ -9,5 +9,15 @@ budgetController.index(req.res);
 
 })
 
+router.post('/budgets/create',(req,res)=>{
 
+budgetController.create(req,res);
+
+})
+
+router.get('/budgets/delete/:id',(req,res)=>{
+    
+    budgetController.delete(req,res);
+
+})
 module.exports = router;
