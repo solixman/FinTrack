@@ -24,7 +24,6 @@ module.exports = {
             });
             
         } catch (error) {
-            req.flash('error', "something went wrong");
             console.log(error);
             return res.redirect(req.get('referer') || '/dashboard');
         }

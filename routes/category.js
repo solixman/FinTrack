@@ -12,7 +12,7 @@ router.post('/category/create',(req,res)=>{
 
 router.get('/budgets-categories',(req,res)=>{
 
-categoryController.index(req.res);
+categoryController.index(req,res);
 
 })
 
