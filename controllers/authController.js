@@ -2,7 +2,7 @@ const { render } = require('ejs');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const { sendMail } = require('../services/Emailer');
-
+const tokenService = require('../services/tokenService');
 
 
 
@@ -123,6 +123,9 @@ module.exports = {
                 req.flash('error', "this email is not in our system");
                 return res.redirect('/forgot-password')
             }
+
+
+            return console.log(tokenService.createToken());
 
 
             let result = await sendMail(email);

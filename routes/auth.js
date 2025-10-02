@@ -26,5 +26,8 @@ router.post('/forgot-password',(req, res) => {
     authController.handelForgottenPassword(req,res);
 });
 
+router.get('/reset-password',(req,res)=>{
+    res.send('hereeee');  
+})
 
 module.exports = router;
