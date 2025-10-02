@@ -1,7 +1,7 @@
 const { render } = require('ejs');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
-const {transporter,sendMail} = require('../services/Emailer');
+const { sendMail } = require('../services/Emailer');
 
 
 
@@ -37,7 +37,7 @@ module.exports = {
 
             const salt = await bcrypt.genSalt(10);
             const hash = await bcrypt.hash(password, salt);
-            let user = await User.create({ name: name, email: email, password: hash,balance:0});
+            let user = await User.create({ name: name, email: email, password: hash, balance: 0 });
 
             req.session.user = { id: user.id, name: user.name, email: user.email };
             req.session.isLoggedIn = true
@@ -104,31 +104,43 @@ module.exports = {
     },
 
 
-    async handelForgottenPassword(req,res){
+
+    async handelForgottenPassword(req, res) {
 
         try {
-         const {email}=req.body;
-          if(!email){
-            req.flash('error', "please enter your email");
-            return res.redirect('/forgot-password')
-          }
-         let user =User.findOne( {where: {
-            email:email,
-         }});
+            const { email } = req.body;
+            if (!email) {
+                req.flash('error', "please enter your email");
+                return res.redirect('/forgot-password')
+            }
+            let user = await User.findOne({
+                where: {
+                    email: email,
+                }
+            });
 
-        if(!user){
-         req.flash('error', "this email is not in our system");
-            return res.redirect('/forgot-password')
-        }
-          
-           let result = await sendMail(transporter,email);
-            return res.send(req.body.email);
+            if (!user) {
+                req.flash('error', "this email is not in our system");
+                return res.redirect('/forgot-password')
+            }
+
+
+            let result = await sendMail(email);
+
+            if (!result.success) {
+                console.log(result.error);
+                req.flash("error", "Failed to send reset email. Try again later.");
+                return res.redirect("/forgot-password");
+            }
+
+            return res.render("../views/pages/emailSent.ejs");
 
         } catch (error) {
-             req.flash('error', "something went wrong");
-            return res.redirect('/login')
+            req.flash('error', "something went wrong");
+            console.log('error in handelr' + error);
+            return res.redirect('/forgot-password');
         }
-        },
-        
+    },
+
 
 }

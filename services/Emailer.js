@@ -1,11 +1,12 @@
 const { name } = require("ejs");
 const nodemailer = require("nodemailer");
-require('dotenv').config;
-
+require('dotenv').config();
+const fs = require("fs");
+const path = require("path");
 
 const transporter = nodemailer.createTransport({
-
-  host: "sersmtp.gmail.email",
+  service: "gmail",
+  host: "smtp.gmail.com",
   port: 587,
   secure: false,
   auth: {
@@ -15,23 +16,25 @@ const transporter = nodemailer.createTransport({
 });
 
 
-async function sendMail(transporter,email){
+async function sendMail(email) {
   try {
+    const filePath = path.join(__dirname, "../views/pages/forgotPasswordMail.html");
+    const html = fs.readFileSync(filePath, "utf-8");
+
     const mailOptions = {
-      from:{
-       name:"FinTrack",
-       address: process.env.EMAIL_USER,
-      },   
-      to: email ,
-      subject: "forgot Password ", 
-      html: "../views/pages/forgotPasswordMAil.ejs"
-    }
-     await transporter.sendMail(mailOptions);
-    return res.render('../views/pages/emailSent.ejs');
-    
+      from: { name: "FinTrack", address: process.env.EMAIL_USER },
+      to: email,
+      subject: "Forgot Password",
+      html
+    };
+
+   const results= transporter.sendMail(mailOptions);
+
+    return { success: true, results };
   } catch (error) {
-    return res.send('something went wrong');
+    console.log("error in mailzr: " + error);
+    return { success: false, error };
   }
 }
 
-module.exports = {sendMail,transporter}
+module.exports = { sendMail }

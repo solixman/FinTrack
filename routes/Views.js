@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/forgot-password',(req, res) => {
-    return res.render('../views/pages/giveEmail.ejs');
+    return res.render('../views/pages/giveEmail.ejs', { error: req.flash('error') });
 
 })
    
