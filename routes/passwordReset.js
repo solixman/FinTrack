@@ -11,4 +11,8 @@ router.get('/reset-password',(req,res)=>{
     authController.handelChangePasswordBytoken(req,res);
 })
 
+router.post('/set-password',(req,res)=>{
+    authController.saveNewPassword(req,res);
+})
+
 module.exports = router;
