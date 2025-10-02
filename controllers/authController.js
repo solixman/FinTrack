@@ -119,31 +119,27 @@ module.exports = {
                     email: email,
                 }
             });
-
+            
             if (!user) {
                 req.flash('error', "this email is not in our system");
                 return res.redirect('/forgot-password')
             }
-
-
+ 
             let token = tokenService.createToken();
+            user.resetToken=token;
+            await user.save();
 
-            res.cookie('token', token, {
-                httpOnly: true,
-                secure: true,
-                sameSite: 'strict',
-                maxAge: 1000 * 60 * 10
-            });
 
             req.session.email=email;
-
-            let result = await sendMail(token, email);
+            let result = await sendMail( user.resetToken, email);
+            
 
             if (!result.success) {
                 console.log(result.error);
                 req.flash("error", "Failed to send reset email. Try again later.");
                 return res.redirect("/forgot-password");
             }
+
 
             return res.render("../views/pages/emailSent.ejs");
 
@@ -157,12 +153,12 @@ module.exports = {
 
     async handelChangePasswordBytoken(req, res) {
         try {
-            const tokenFromCookies = req.cookies.token;
+            let email=req.session.email;
+            let user = await User.findOne({where:{email:email}});
+
             const tokenFromQueryString = req.query.token
-            console.log(req.cookies.token)
-            console.log(req.query.token)
-            
-            if (tokenFromCookies !== tokenFromQueryString) {
+         
+            if (user.resetToken !== tokenFromQueryString) {
                 req.flash("error", "suspicious actions detected, please try again later");
                 return res.redirect("/");
             }
@@ -170,6 +166,7 @@ module.exports = {
 
         } catch (error) {
             req.flash("error", "something went wrong, please try again later");
+            console.log(error);
             return res.redirect("/");
         }
     },
