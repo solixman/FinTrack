@@ -1,3 +1,4 @@
+const { name } = require("ejs");
 const nodemailer = require("nodemailer");
 require('dotenv').config;
 const transporter = nodemailer.createTransport({
@@ -11,12 +12,22 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mailOptions = {
 
- 
-    from: '"FinTrack" <SLX@FinTrack.email>',
-    to: '' ,
-    subject: "forgot Password ",
-   
-    html: "../views/pages/forgotPasswordMAil.ejs"
+async function sendMail(transporter,email){
+  try {
+    const mailOptions = {
+      from:{
+       name:"FinTrack",
+       address: process.env.EMAIL_USER,
+      },   
+      to: email ,
+      subject: "forgot Password ", 
+      html: "../views/pages/forgotPasswordMAil.ejs"
+    }
+    transporter.sendMail(mailOptions);
+    return res.render('../views/pages/emailSent.ejs');
+    
+  } catch (error) {
+    return res.send('something went wrong');
   }
+}
