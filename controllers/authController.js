@@ -2,7 +2,7 @@ const { render } = require('ejs');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const { sendMail } = require('../services/Emailer');
-const tokenService = require('../services/tokenService');
+const tokenService = require('../services/AuthService');
 const { changePassword } = require('./userController');
 
 
@@ -134,12 +134,8 @@ module.exports = {
                 sameSite: 'strict',
                 maxAge: 1000 * 60 * 10
             });
-            res.cookie('email', email, {
-                httpOnly: true,
-                secure: true,
-                sameSite: 'strict',
-                maxAge: 1000 * 60 * 10
-            });
+
+            req.session.email=email;
 
             let result = await sendMail(token, email);
 
@@ -163,16 +159,43 @@ module.exports = {
         try {
             const tokenFromCookies = req.cookies.token;
             const tokenFromQueryString = req.query.token
-            
+
             if (tokenFromCookies !== tokenFromQueryString) {
                 req.flash("error", "suspicious actions detected, please try again later");
                 return res.redirect("/");
             }
             res.render('../views/pages/setNewPassword.ejs')
-            
+
         } catch (error) {
             req.flash("error", "suspicious actions detected, please try again later");
             return res.redirect("/");
+        }
+    },
+
+
+    async saveNewPassword(req, res) {
+        try {
+            const { password, confirmPassword } = req.body;
+            if (password !== confirmPassword) {
+                req.flash('error', "passwords don't match");
+                return res.redirect('/register')
+            }
+            const email=req.session.email
+           
+            let user=await User.findOne({where:{email:email}});
+
+            const salt = await bcrypt.genSalt(10);
+            const hashed = await bcrypt.hash(password,salt);
+
+            user.password=hashed;
+            user.save();
+            
+            req.flash("message",'password changed succesfully, please sign in')
+            return res.redirect('/');
+        } catch (error) {
+             req.flash("error",'something went wrong, please try agian later');
+             console.log(error);
+            return res.redirect('/');
         }
     }
 
