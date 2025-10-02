@@ -1,7 +1,7 @@
 const { render } = require('ejs');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
-
+const {transporter,sendMail} = require('../services/Emailer');
 
 
 
@@ -107,7 +107,21 @@ module.exports = {
     async handelForgottenPassword(req,res){
 
         try {
-           
+         const {email}=req.body;
+          if(!email){
+            req.flash('error', "please enter your email");
+            return res.redirect('/forgot-password')
+          }
+         let user =User.findOne( {where: {
+            email:email,
+         }});
+
+        if(!user){
+         req.flash('error', "this email is not in our system");
+            return res.redirect('/forgot-password')
+        }
+          
+           let result = await sendMail(transporter,email);
             return res.send(req.body.email);
 
         } catch (error) {
