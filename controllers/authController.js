@@ -1,3 +1,4 @@
+const { render } = require('ejs');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
 
@@ -98,9 +99,23 @@ module.exports = {
             req.session.isLoggedIn = false;
         } catch (error) {
             req.flash('error', "something went wrong");
-            res.send('something went wrong')
+            return res.redirect('/dashboard')
         }
-    }
+    },
 
+
+    async forgottenPassword(req,res){
+
+        try {
+            
+            
+            
+            return res.render('../views/pages/giveEmail.ejs');
+        } catch (error) {
+             req.flash('error', "something went wrong");
+            return res.redirect('/login')
+        }
+        },
+        
 
 }
