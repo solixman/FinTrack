@@ -159,7 +159,9 @@ module.exports = {
         try {
             const tokenFromCookies = req.cookies.token;
             const tokenFromQueryString = req.query.token
-
+            console.log(req.cookies.token)
+            console.log(req.query.token)
+            
             if (tokenFromCookies !== tokenFromQueryString) {
                 req.flash("error", "suspicious actions detected, please try again later");
                 return res.redirect("/");
@@ -167,7 +169,7 @@ module.exports = {
             res.render('../views/pages/setNewPassword.ejs')
 
         } catch (error) {
-            req.flash("error", "suspicious actions detected, please try again later");
+            req.flash("error", "something went wrong, please try again later");
             return res.redirect("/");
         }
     },

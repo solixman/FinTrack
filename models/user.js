@@ -57,6 +57,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       defaultValue: 'MAD',
     },
+    resetToken: DataTypes.STRING,
     role: {
       type: DataTypes.ENUM('admin', 'user'),
       defaultValue: 'user',
