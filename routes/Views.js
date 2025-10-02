@@ -19,7 +19,7 @@ router.get('/dashboard', async (req, res) => {
    dashboardController.renderDashboard(req,res);
 });
 router.get('/', async (req, res) => {
-   res.render('../views/pages/landingPage.ejs')
+   res.render('../views/pages/landingPage.ejs',{ error: req.flash('error') },{ message: req.flash('message') })
 });
 
 router.get('/forgot-password',(req, res) => {

@@ -384,9 +384,23 @@
       </ul>
     </div>
   </nav>
+  <% if(error.length>0){ %>
 
+        <div class="alert alert-danger" role="alert">
+            <%=error%>
+        </div>
+
+        <% }%>
+    <% if(message.length>0){ %>
+
+        <div class="alert alert-success" role="success">
+            <%=message%>
+        </div>
+
+        <% }%>
   <!-- Hero Section -->
   <section class="hero">
+
     <div class="container">
       <h1>Take Control of Your Finances</h1>
       <p>Track your expenses, manage budgets, set savings goals, and visualize your finances interactively—all in one place.</p>

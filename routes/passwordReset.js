@@ -8,7 +8,7 @@ router.post('/forgot-password',(req, res) => {
 });
 
 router.get('/reset-password',(req,res)=>{
-    authController.changePasswordBytoken(req,res);
+    authController.handelChangePasswordBytoken(req,res);
 })
 
 module.exports = router;

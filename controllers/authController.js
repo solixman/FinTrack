@@ -127,7 +127,14 @@ module.exports = {
 
 
             let token = tokenService.createToken();
+
             res.cookie('token', token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'strict',
+                maxAge: 1000 * 60 * 10
+            });
+            res.cookie('email', email, {
                 httpOnly: true,
                 secure: true,
                 sameSite: 'strict',
@@ -152,16 +159,24 @@ module.exports = {
     },
 
 
-    async changePasswordBytoken(req, res) {
+    async handelChangePasswordBytoken(req, res) {
+        try {
+            const tokenFromCookies = req.cookies.token;
+            const tokenFromQueryString = req.query.token
+
+            if (tokenFromCookies !== tokenFromQueryString) {
+                req.flash("error", "suspicious actions detected please try again later");
+                return res.redirect("/");
+            }
 
 
-
-        const token = req.cookies.token;
-        console.log(token);
-   
-        return res.send(req.body, req.params);
+            res.render('../views/pages/setNewPassword.ejs')
 
 
+        } catch (error) {
+            req.flash("error", "suspicious actions detected please try again later");
+            return res.redirect("/");
+        }
     }
 
 
