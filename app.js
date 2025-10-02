@@ -6,8 +6,11 @@ const session = require('express-session');
 const sessionConfig = require('./config/session');
 const flash=require("connect-flash");
 const router= express.Router();
-app.use(express.json());
+const cookieParser = require("cookie-parser");
 
+
+app.use(cookieParser());
+app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended : true }));
 app.use(express.json())

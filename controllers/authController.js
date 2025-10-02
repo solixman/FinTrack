@@ -3,6 +3,7 @@ const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const { sendMail } = require('../services/Emailer');
 const tokenService = require('../services/tokenService');
+const { changePassword } = require('./userController');
 
 
 
@@ -130,7 +131,7 @@ module.exports = {
                 httpOnly: true,
                 secure: true,
                 sameSite: 'strict',
-                maxAge: 1000*60*10
+                maxAge: 1000 * 60 * 10
             });
 
             let result = await sendMail(token, email);
@@ -149,6 +150,19 @@ module.exports = {
             return res.redirect('/forgot-password');
         }
     },
+
+
+    async changePasswordBytoken(req, res) {
+
+
+
+        const token = req.cookies.token;
+        console.log(token);
+   
+        return res.send(req.body, req.params);
+
+
+    }
 
 
 }
