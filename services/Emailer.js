@@ -16,11 +16,11 @@ const transporter = nodemailer.createTransport({
 });
 
 
-async function sendMail(email) {
+async function sendMail(token,email) {
   try {
     const html = await ejs.renderFile(
       __dirname + "/../views/pages/forgotPasswordMail.ejs",
-      {resetToken: process.env.RESET_TOKEN}
+      {resetToken: token}
     );
 
     const mailOptions = {

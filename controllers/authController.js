@@ -125,10 +125,15 @@ module.exports = {
             }
 
 
-            return console.log(tokenService.createToken());
+            let token = tokenService.createToken();
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'strict',
+                maxAge: 1000*60*10
+            });
 
-
-            let result = await sendMail(email);
+            let result = await sendMail(token, email);
 
             if (!result.success) {
                 console.log(result.error);
