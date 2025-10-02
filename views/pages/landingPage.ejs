@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinSolutions - Manage Your Finances</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary: #0f766e;
+      --color-primary-dark: #0d5f58;
+      --color-accent: #f59e0b;
+      --color-background: #fafaf9;
+      --color-surface: #ffffff;
+      --color-text: #1c1917;
+      --color-text-muted: #57534e;
+      --color-border: #e7e5e4;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-background);
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--color-surface);
+      padding: 1rem 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .navbar-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    .btn {
+      padding: 0.625rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn-light {
+      background: white;
+      color: var(--color-primary);
+    }
+
+    .btn-light:hover {
+      background: var(--color-background);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #14b8a6 100%);
+      color: white;
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 5rem 1.5rem;
+    }
+
+    .features .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--color-text);
+    }
+
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 2rem;
+      background: var(--color-surface);
+      border-radius: 1rem;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      border-color: var(--color-primary);
+    }
+
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--color-primary), #14b8a6);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .feature-card h5 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--color-text);
+    }
+
+    .feature-card p {
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* About Section */
+    .about {
+      padding: 5rem 1.5rem;
+      background: var(--color-surface);
+    }
+
+    .about .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-content h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--color-text);
+    }
+
+    .about-content p {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 1.0625rem;
+      color: var(--color-text);
+    }
+
+    .check-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--color-text);
+      color: white;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+
+    footer small {
+      opacity: 0.7;
+    }
+
+    /* Mobile Menu Toggle */
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-text);
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-surface);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-nav.active {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.125rem;
+      }
+
+      .hero {
+        padding: 4rem 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-image {
+        height: 300px;
+      }
+
+      .section-header h2,
+      .about-content h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="/">FinSolutions</a>
+      <button class="navbar-toggle" onclick="toggleMenu()">☰</button>
+      <ul class="navbar-nav" id="navMenu">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="/login" class="btn btn-primary">Login</a></li>
+        <li><a href="/register" class="btn btn-outline">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Take Control of Your Finances</h1>
+      <p>Track your expenses, manage budgets, set savings goals, and visualize your finances interactively—all in one place.</p>
+      <a href="/register" class="btn btn-light">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Features</h2>
+        <p>Everything you need to manage your personal finances efficiently</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">👤</div>
+          <h5>User Management</h5>
+          <p>Secure sign-up/login, customizable profile, and personal preferences management.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h5>Transactions</h5>
+          <p>Add, edit, categorize, and export your income and expenses easily.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h5>Budgets & Goals</h5>
+          <p>Create monthly budgets, track spending vs goals, and monitor savings targets.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h5>Data Visualization</h5>
+          <p>Interactive charts showing spending trends, category breakdowns, and reports.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <h5>Alerts & Notifications</h5>
+          <p>Receive notifications when you exceed your budgets or reach your goals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h5>Security</h5>
+          <p>Passwords hashed, session management, and protection against SQL injections.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <img src="https://images.unsplash.com/photo-1561414927-6d7b5363c856?auto=format&fit=crop&w=800&q=80" alt="FinTech Dashboard" class="about-image">
+      <div class="about-content">
+        <h2>About FinSolutions</h2>
+        <p>FinSolutions is an innovative fintech application designed to help users manage their personal finances efficiently. From tracking income and expenses to setting up budgets and savings goals, everything is visualized through intuitive dashboards and charts.</p>
+        <ul class="about-list">
+          <li>
+            <span class="check-icon">✓</span>
+            Track expenses and incomes easily
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            Set budgets and savings goals
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            Visualize finances with interactive charts
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            Secure, modern, and responsive web application
+          </li>
+        </ul>
+        <a href="/register" class="btn btn-primary">Create Your Account</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; <%= new Date().getFullYear() %> FinSolutions. All rights reserved.</p>
+      <small>Designed & built with Node.js, Express, MySQL, and modern web technologies</small>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('active');
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Close mobile menu if open
+          document.getElementById('navMenu').classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

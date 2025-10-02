@@ -17,6 +17,9 @@ router.get('/login', (req, res) => {
 router.get('/dashboard', async (req, res) => {
    dashboardController.renderDashboard(req,res);
 });
+router.get('/', async (req, res) => {
+   res.render('../views/pages/landingPage.ejs')
+});
 
 
 module.exports = router
