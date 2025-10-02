@@ -23,6 +23,7 @@ const transactionRouter = require('./routes/transaction')
 const categoryRouter = require('./routes/category')
 const savingGoalRouter = require('./routes/savingGoal')
 const budgetsRouter = require('./routes/budgets')
+const passwordRouter = require('./routes/passwordReset')
 
 
 app.use('/auth',authRouter);
@@ -32,8 +33,7 @@ app.use(categoryRouter);
 app.use(savingGoalRouter);
 app.use(budgetsRouter);
 app.use('/user',userRouter);
-
-
+app.use(passwordRouter);
 
 
 
