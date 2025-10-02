@@ -62,6 +62,9 @@ module.exports = {
         type: Sequelize.ENUM('active', 'suspended', 'deleted'),
         defaultValue: 'active',
       },
+      resetToken:{
+        type:Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

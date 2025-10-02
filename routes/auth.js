@@ -19,16 +19,8 @@ router.get('/logout',(req,res)=>{
 
 router.get('/current',(req,res)=>{
   user=req.session.user;
-  console.log(user);
-  console.log(req.session.isLoggedIn);
-  
-  res.send('in current user');
+  return req.send(user)
 });
-router.get('/forgotPassword',(req,res)=>{
 
-});
-router.get('/changePassword',(req,res)=>{
-
-});
 
 module.exports = router;
