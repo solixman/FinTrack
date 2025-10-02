@@ -104,13 +104,12 @@ module.exports = {
     },
 
 
-    async forgottenPassword(req,res){
+    async handelForgottenPassword(req,res){
 
         try {
-            
-            
-            
-            return res.render('../views/pages/giveEmail.ejs');
+           
+            return res.send(req.body.email);
+
         } catch (error) {
              req.flash('error', "something went wrong");
             return res.redirect('/login')

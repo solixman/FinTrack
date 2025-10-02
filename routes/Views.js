@@ -22,12 +22,11 @@ router.get('/', async (req, res) => {
    res.render('../views/pages/landingPage.ejs')
 });
 
-router.route('/forgot-password').get(async (req, res) => {
-   authController.forgottenPassword(req,res);
+router.get('/forgot-password',(req, res) => {
+    return res.render('../views/pages/giveEmail.ejs');
 
-}).post( async (req,res)=>{
-    authController.handlingforgottenPassword(req,res); 
 })
+   
 
 
 module.exports = router
