@@ -1,8 +1,8 @@
 const { name } = require("ejs");
 const nodemailer = require("nodemailer");
 require('dotenv').config();
-const fs = require("fs");
-const path = require("path");
+const ejs = require('ejs');
+
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -18,8 +18,10 @@ const transporter = nodemailer.createTransport({
 
 async function sendMail(email) {
   try {
-    const filePath = path.join(__dirname, "../views/pages/forgotPasswordMail.html");
-    const html = fs.readFileSync(filePath, "utf-8");
+    const html = await ejs.renderFile(
+      __dirname + "/../views/pages/forgotPasswordMail.ejs",
+      {resetToken: process.env.RESET_TOKEN}
+    );
 
     const mailOptions = {
       from: { name: "FinTrack", address: process.env.EMAIL_USER },
@@ -28,7 +30,7 @@ async function sendMail(email) {
       html
     };
 
-   const results= transporter.sendMail(mailOptions);
+    const results = transporter.sendMail(mailOptions);
 
     return { success: true, results };
   } catch (error) {
