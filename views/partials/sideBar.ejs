@@ -1,45 +1,158 @@
+<style>
+  .modern-sidebar {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2d3748 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+  }
 
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    color: white;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  }
 
-<div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/<%= title %>" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline"><%= title  %></span>
-                </a>
+  .sidebar-logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
 
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="/dashboard" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/transactions" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">transactions</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/savingGoals" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">savingGoals</span></a>
-                    </li>
-                    <li>
-                        <a href="/budgets-categories" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">budgets & Categories</span></a>
-                    </li>
-                    <li>
-                        <a href="/user/profile" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Profile</span></a>
-                    </li>
-                    
-                </ul>
-                <hr>
-                <div class="dropdown pb-4">
-                  <a class="dropdown-item" href="/logout">logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+  .sidebar-logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-nav-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    color: #d1d5db;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .sidebar-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateX(4px);
+  }
+
+  .sidebar-nav-link.active {
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+    color: white;
+  }
+
+  .sidebar-nav-icon {
+    font-size: 1.25rem;
+    width: 24px;
+    text-align: center;
+  }
+
+  .sidebar-footer {
+    padding-top: 1rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .sidebar-logout {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    color: #ef4444;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .sidebar-logout:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-logo-text,
+    .sidebar-nav-text {
+      display: none;
+    }
+
+    .modern-sidebar {
+      padding: 1rem 0.5rem;
+    }
+  }
+</style>
+
+<div class="modern-sidebar">
+  <a href="/dashboard" class="sidebar-logo">
+    <div class="sidebar-logo-icon">FT</div>
+    <span class="sidebar-logo-text">FinTrack</span>
+  </a>
+
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a href="/dashboard" class="sidebar-nav-link">
+        <i class="bi bi-speedometer2 sidebar-nav-icon"></i>
+        <span class="sidebar-nav-text">Dashboard</span>
+      </a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="/transactions" class="sidebar-nav-link">
+        <i class="bi bi-arrow-left-right sidebar-nav-icon"></i>
+        <span class="sidebar-nav-text">Transactions</span>
+      </a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="/savingGoals" class="sidebar-nav-link">
+        <i class="bi bi-piggy-bank sidebar-nav-icon"></i>
+        <span class="sidebar-nav-text">Saving Goals</span>
+      </a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="/budgets-categories" class="sidebar-nav-link">
+        <i class="bi bi-wallet2 sidebar-nav-icon"></i>
+        <span class="sidebar-nav-text">Budgets & Categories</span>
+      </a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="/user/profile" class="sidebar-nav-link">
+        <i class="bi bi-person-circle sidebar-nav-icon"></i>
+        <span class="sidebar-nav-text">Profile</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <a href="/logout" class="sidebar-logout">
+      <i class="bi bi-box-arrow-right sidebar-nav-icon"></i>
+      <span class="sidebar-nav-text">Logout</span>
+    </a>
+  </div>
 </div>
-
