@@ -97,6 +97,56 @@ module.exports = {
             throw new Error('Error fetching savingGoals');
         }
 
+    },
+
+
+    async addMoney(req,res){
+
+         try {
+             let { amount,takeFromBalance } = req.body;
+             let user = await User.findByPk(req.session.user.id);
+             amount = parseFloat(amount);
+             
+             
+            
+             if (!amount) {
+                 req.flash('error', "Target amount are required");
+                 return res.redirect(req.get('referer') || '/savingGoals');
+                }
+                
+                
+                if (takeFromBalance === "yes" && amount !== 0) {
+                    
+                if (amount < user.balance) {
+                    user.balance -= amount;
+                } else {
+                    req.flash('error', "if you wanna take from balance the current Amount should be smaller than the balance");
+                    return res.redirect(req.get('referer') || '/savingGoals');
+                    
+                }
+            }
+            
+            let id=req.params.id;
+            let savingGoal= await SavingGoal.findByPk(id);
+             savingGoal.currentAmount+=amount;
+            
+             console.log('user is :',user);
+             console.log('saving Goal is :',savingGoal);
+
+            await savingGoal.save();
+            await user.save();
+            
+            req.flash('message', "amount added  successfully");
+            return res.redirect(req.get('referer') || '/savingGoals');
+            
+         } catch (error) {
+              console.log(error);
+            req.flash('error', "something went wrong");
+            return res.redirect(req.get('referer') || '/savingGoals');
+         }
+
+
+
     }
 
 

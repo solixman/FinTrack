@@ -20,5 +20,9 @@ router.get('/categories/delete/:id',(req,res)=>{
     categoryController.delete(req,res);
 })
 
+router.post('/categories/update/:id',(req,res)=>{
+    categoryController.update(req,res);
+})
+
 
 module.exports = router

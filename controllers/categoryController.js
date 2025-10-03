@@ -1,12 +1,12 @@
-const { User,Budget, Category } = require('../models')
+const { User, Budget, Category } = require('../models')
 
 
 module.exports = {
 
 
-    async index(req,res){
+    async index(req, res) {
 
-         try {
+        try {
             const user = await User.findByPk(req.session.user.id);
             const categories = await this.getBudgetsAndCategories(user.id);
 
@@ -22,7 +22,7 @@ module.exports = {
                 user,
                 body: CaBHTML
             });
-            
+
         } catch (error) {
             req.flash('error', "something went wrong");
             console.log(error);
@@ -44,7 +44,7 @@ module.exports = {
             req.flash('message', "category created succesfully ");
             return res.redirect(req.get('referer') || '/budgets-categories');
         } catch (error) {
-           req.flash('error', "something went wrong");
+            req.flash('error', "something went wrong");
             console.log(error);
             return res.redirect(req.get('referer') || '/budgets-categories');
         }
@@ -52,10 +52,10 @@ module.exports = {
     },
 
 
-     async delete(req, res) {
+    async delete(req, res) {
 
         try {
-           const id = req.params.id;
+            const id = req.params.id;
             Category.destroy({
                 where: {
                     id: id
@@ -63,16 +63,40 @@ module.exports = {
             });
 
             Budget.destroy({
-                 where: {
+                where: {
                     CategoryId: id
                 }
             })
 
             req.flash('message', "category removed successfully");
-            return res.redirect(req.get('referer') || '/transactions');
+            return res.redirect(req.get('referer') || '/budgets-categories');
         } catch (error) {
             req.flash('error', "something went wrong");
-            return res.redirect(req.get('referer') || '/transactions');
+            return res.redirect(req.get('referer') || '/budgets-categories');
+        }
+
+    },
+
+    async update(req, res) {
+
+        try {
+            let category = await Category.findByPk(req.params.id);
+
+            if (!category) {
+                req.flash('error', "this category doesn't exist, please try again later");
+                return res.redirect(req.get('referer') || '/budgets-categories');
+            }
+
+            const { name, description, type } = req.body;
+            category.name = name
+            category.description = description
+            category.type = type
+            category.save();
+            req.flash('message', "category updated successfully");
+            return res.redirect(req.get('referer') || '/budgets-categories');
+
+        } catch (error) {
+
         }
 
     },

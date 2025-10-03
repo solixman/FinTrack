@@ -1,8 +1,6 @@
 const { render } = require('ejs');
-const { User } = require('../models')
-const transactionController = require('../controllers/transactionController');
-const savingGoalController = require('../controllers/savingGoalController');
-const categoryController = require('../controllers/categoryController');
+const { User } = require('../models');
+const userService = require('../services/userService');
 
 module.exports = {
 
@@ -11,18 +9,13 @@ module.exports = {
     async renderDashboard(req, res) {
 
         try {
-            const user = await User.findByPk(req.session.user.id);
 
-            let transactions = await transactionController.getTransactions(user.id, 5);
-            let savingGoals = await savingGoalController.getSavingGoals(user.id, 5);
-            let categories = await categoryController.getBudgetsAndCategories(user.id);
-
+            const user= await User.findByPk(req.session.user.id);
+            
+            const data = await userService.getData(user.id);
 
             const dashboardHTML = await require('ejs').renderFile(__dirname + '/../views/pages/dashboard.ejs', {
-                user,
-                transactions,
-                savingGoals,
-                categories,
+                data
             });
 
 

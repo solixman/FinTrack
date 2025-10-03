@@ -1,32 +1,364 @@
-<div class="container-fluid">
-  <!-- Page Title -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="mb-0">Dashboard</h2>
-    <span class="text-muted">Welcome, <%= user.name %></span>
+<style>
+  /* Dashboard Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    color: #2d3748;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Header Section */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .header-left h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 0.25rem;
+  }
+
+  .welcome-text {
+    color: #718096;
+    font-size: 0.95rem;
+  }
+
+  .generate-report-btn {
+    background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(13, 148, 136, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .generate-report-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(13, 148, 136, 0.3);
+    background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  }
+
+  /* Summary Cards */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .summary-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+  }
+
+  .summary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .summary-card.primary {
+    background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+    color: white;
+    border: none;
+  }
+
+  .summary-card.success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .card-content p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .card-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .amount {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .amount.income {
+    color: #10b981;
+  }
+
+  .amount.expense {
+    color: #ef4444;
+  }
+
+  .summary-card.primary .amount.income,
+  .summary-card.primary .amount.expense {
+    color: white;
+  }
+
+  .balance-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+  }
+
+  /* Data Sections */
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .data-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+
+  .data-card-header {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 2px solid #0d9488;
+  }
+
+  .data-card-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a202c;
+  }
+
+  .data-card-body {
+    padding: 0;
+  }
+
+  /* Table Styles */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .data-table thead {
+    background: #f8fafc;
+  }
+
+  .data-table th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .data-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.95rem;
+  }
+
+  .data-table tbody tr {
+    transition: background-color 0.2s ease;
+  }
+
+  .data-table tbody tr:hover {
+    background-color: #f8fafc;
+  }
+
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .empty-state {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.95rem;
+  }
+
+  /* Goals List */
+  .goals-list {
+    list-style: none;
+  }
+
+  .goal-item {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .goal-item:hover {
+    background-color: #f8fafc;
+  }
+
+  .goal-item:last-child {
+    border-bottom: none;
+  }
+
+  .goal-info {
+    flex: 1;
+  }
+
+  .goal-name {
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 0.25rem;
+  }
+
+  .goal-target {
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+
+  .goal-progress {
+    background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  /* Full Width Section */
+  .full-width-section {
+    margin-bottom: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem 0.5rem;
+    }
+
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header-left h1 {
+      font-size: 1.5rem;
+    }
+
+    .generate-report-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .data-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .balance-amount {
+      font-size: 2rem;
+    }
+
+    .goal-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .goal-progress {
+      align-self: flex-start;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .summary-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="dashboard-header">
+    
+    <a href="/user/generate-report" class="generate-report-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+        <polyline points="10 9 9 9 8 9"></polyline>
+      </svg>
+    </a>
   </div>
 
-  <div class="row">
-    <!-- Balance Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card text-white bg-success shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Current Balance</h5>
-          <p class="card-text fs-3 fw-bold"><%= user.balance %> MAD</p>
-        </div>
+  <div class="summary-grid">
+    <div class="summary-card primary">
+      <div class="card-title">Summary (Last 30 Days)</div>
+      <div class="card-content">
+        <p>Income: <span class="amount income">+<%= data.summary.totalIncome %> MAD</span></p>
+        <p>Expenses: <span class="amount expense">-<%= data.summary.totalExpenses %> MAD</span></p>
+        <p>Net Savings: <span class="amount"><%= data.summary.netSavings %> MAD</span></p>
       </div>
+    </div>
+
+    <div class="summary-card success">
+      <div class="card-title">Current Balance</div>
+      <div class="balance-amount"><%= data.user.balance %> MAD</div>
     </div>
   </div>
 
-  <div class="row">
-    <!-- Recent Transactions -->
-    <div class="col-md-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-header bg-light">
-          <h5 class="mb-0">Recent Transactions</h5>
-        </div>
-        <div class="card-body p-0">
-          <table class="table table-hover table-striped mb-0">
-            <thead class="table-dark">
+  <div class="data-grid">
+    <div class="data-card">
+      <div class="data-card-header">
+        <h2>Recent Transactions</h2>
+      </div>
+      <div class="data-card-body">
+        <% if (data.transactions && data.transactions.length > 0) { %>
+          <table class="data-table">
+            <thead>
               <tr>
                 <th>Date</th>
                 <th>Category</th>
@@ -34,92 +366,79 @@
               </tr>
             </thead>
             <tbody>
-              <% if (transactions && transactions.length > 0) { %>
-                <% transactions.forEach(t => { %>
-                  <tr>
-                    <td><%= new Date(t.date).toLocaleDateString() %></td>
-                    <td><%= t.category ? t.category : "Uncategorized" %></td>
-                    <td>
-                      <% if (t.type === "expense") { %>
-                        <span class="text-danger fw-bold">-<%= t.amount %></span>
-                      <% } else { %>
-                        <span class="text-success fw-bold">+<%= t.amount %></span>
-                      <% } %>
-                    </td>
-                  </tr>
-                <% }) %>
-              <% } else { %>
+              <% data.transactions.forEach(t => { %>
                 <tr>
-                  <td colspan="3" class="text-center text-muted py-3">No transactions found.</td>
+                  <td><%= new Date(t.date).toLocaleDateString() %></td>
+                  <td><%= t.Category ? t.Category.name : "Uncategorized" %></td>
+                  <td>
+                    <% if (t.type === "expense") { %>
+                      <span class="amount expense">-<%= t.amount %> MAD</span>
+                    <% } else { %>
+                      <span class="amount income">+<%= t.amount %> MAD</span>
+                    <% } %>
+                  </td>
                 </tr>
-              <% } %>
+              <% }) %>
             </tbody>
           </table>
-        </div>
+        <% } else { %>
+          <div class="empty-state">No transactions found.</div>
+        <% } %>
       </div>
     </div>
 
-    <!-- Saving Goals -->
-    <div class="col-md-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-header bg-light">
-          <h5 class="mb-0">Saving Goals</h5>
-        </div>
-        <div class="card-body p-0">
-          <ul class="list-group list-group-flush">
-            <% if (savingGoals && savingGoals.length > 0) { %>
-              <% savingGoals.forEach(goal => { %>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <span><%= goal.name || "Goal" %> - Target: <%= goal.targetAmount %> MAD</span>
-                  <span class="badge bg-primary">
-                    <%= goal.currentAmount %> / <%= goal.targetAmount %>
-                  </span>
-                </li>
-              <% }) %>
-            <% } else { %>
-              <li class="list-group-item text-center text-muted">No saving goals yet.</li>
-            <% } %>
+    <div class="data-card">
+      <div class="data-card-header">
+        <h2>Saving Goals</h2>
+      </div>
+      <div class="data-card-body">
+        <% if (data.goals && data.goals.length > 0) { %>
+          <ul class="goals-list">
+            <% data.goals.forEach(goal => { %>
+              <li class="goal-item">
+                <div class="goal-info">
+                  <div class="goal-name"><%= goal.purpose || "Goal" %></div>
+                  <div class="goal-target">Target: <%= goal.targetAmount %> MAD</div>
+                </div>
+                <div class="goal-progress">
+                  <%= goal.currentAmount %> / <%= goal.targetAmount %>
+                </div>
+              </li>
+            <% }) %>
           </ul>
-        </div>
+        <% } else { %>
+          <div class="empty-state">No saving goals yet.</div>
+        <% } %>
       </div>
     </div>
   </div>
 
-  <!-- Budgets per Category -->
-  <div class="row">
-    <div class="col-12 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-header bg-light">
-          <h5 class="mb-0">Budgets by Category</h5>
-        </div>
-        <div class="card-body p-0">
-          <table class="table table-hover table-striped mb-0">
-            <thead class="table-dark">
+  <div class="full-width-section">
+    <div class="data-card">
+      <div class="data-card-header">
+        <h2>Category Totals</h2>
+      </div>
+      <div class="data-card-body">
+        <% if (data.categories && Object.keys(data.categories).length > 0) { %>
+          <table class="data-table">
+            <thead>
               <tr>
                 <th>Category</th>
-                <th>Limit</th>
-                <th>Spent</th>
+                <th>Total Amount</th>
               </tr>
             </thead>
             <tbody>
-              <% if (categories && categories.length > 0) { %>
-                <% categories.forEach(cat => { %>
-                  <tr>
-                    <td><%= cat.name %></td>
-                    <td><%= cat.budget ? cat.budget.limitAmount : "Not Set" %> 
-                        <%= cat.budget ? "MAD" : "" %></td>
-                    <td><%= cat.budget ? (cat.budget.spentAmount || 0) : "-" %> 
-                        <%= cat.budget ? "MAD" : "" %></td>
-                  </tr>
-                <% }) %>
-              <% } else { %>
+              <% Object.entries(data.categories).forEach(([name, amount]) => { %>
                 <tr>
-                  <td colspan="3" class="text-center text-muted py-3">No categories or budgets found.</td>
+                  <td><%= name %></td>
+                  <td><span class="amount"><%= amount %> MAD</span></td>
                 </tr>
-              <% } %>
+              <% }) %>
             </tbody>
           </table>
-        </div>
+        <% } else { %>
+          <div class="empty-state">No category data found.</div>
+        <% } %>
       </div>
     </div>
   </div>

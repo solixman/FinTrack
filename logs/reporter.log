@@ -707,3 +707,83 @@ Error: Engine 'ejs' not found. If this is a custom engine make sure it's properl
 2025-10-03T10:48:42.059Z - debug: Running chrome with params {"timeout":59326,"margin":{},"printBackground":true} rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
 2025-10-03T10:48:42.323Z - debug: Skipping storing report. rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
 2025-10-03T10:48:42.323Z - info: Rendering request 1 finished in 1813 ms rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T11:37:52.192Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T11:37:52.195Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T11:37:52.201Z - info: Extensions location cache C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json contains older information, crawling
+2025-10-03T11:37:54.898Z - info: Found 35 extension(s)
+2025-10-03T11:37:54.969Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T11:37:54.973Z - debug: Discovered 35 extensions
+2025-10-03T11:37:55.055Z - info: Using extension authentication@4.2.3
+2025-10-03T11:37:55.375Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T11:37:55.377Z - info: Using extension base@4.0.0
+2025-10-03T11:37:55.381Z - info: Using extension child-templates@4.1.0
+2025-10-03T11:37:55.385Z - info: Using extension cli@4.1.2
+2025-10-03T11:37:55.395Z - info: Using extension components@4.0.2
+2025-10-03T11:37:55.400Z - info: Using extension data@4.1.0
+2025-10-03T11:37:55.402Z - info: Using extension express@4.2.3
+2025-10-03T11:37:56.158Z - info: Using extension freeze@4.0.0
+2025-10-03T11:37:56.163Z - info: Using extension fs-store@4.1.1
+2025-10-03T11:37:56.463Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T11:37:56.464Z - info: Using extension handlebars@4.0.1
+2025-10-03T11:37:56.468Z - info: Using extension import-export@4.0.8
+2025-10-03T11:37:56.500Z - info: Using extension jsrender@4.0.0
+2025-10-03T11:37:56.503Z - info: Using extension licensing@4.0.5
+2025-10-03T11:37:56.600Z - info: Using extension localization@4.0.1
+2025-10-03T11:37:56.603Z - info: Using extension npm@4.0.1
+2025-10-03T11:37:56.611Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T11:37:56.620Z - info: Using extension reports@4.1.5
+2025-10-03T11:37:56.627Z - info: Using extension tags@4.0.1
+2025-10-03T11:37:56.631Z - info: Using extension text@4.0.2
+2025-10-03T11:37:56.634Z - info: Using extension version-control@4.1.1
+2025-10-03T11:37:56.660Z - info: Using extension assets@4.2.3
+2025-10-03T11:37:56.688Z - info: Using extension authorization@4.1.0
+2025-10-03T11:37:56.698Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T11:37:56.698Z - info: Using extension browser-client@4.1.0
+2025-10-03T11:37:56.703Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T11:37:56.711Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T11:37:56.712Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T11:37:56.714Z - info: Using extension docx@4.9.0
+2025-10-03T11:37:56.719Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T11:37:57.060Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T11:37:57.061Z - info: Using extension pptx@4.4.2
+2025-10-03T11:37:57.065Z - info: Using extension scheduling@4.1.0
+2025-10-03T11:37:57.122Z - info: Using extension scripts@4.2.0
+2025-10-03T11:37:57.125Z - info: Using extension static-pdf@4.1.0
+2025-10-03T11:37:57.126Z - info: Using extension studio@4.3.2
+2025-10-03T11:37:57.312Z - info: Using extension xlsx@4.5.1
+2025-10-03T11:37:57.317Z - info: Using extension public-templates@4.0.0
+2025-10-03T11:37:57.320Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T11:37:57.320Z - info: Using extension sample-template@4.0.2
+2025-10-03T11:37:57.326Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T11:37:57.330Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T11:37:57.331Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T11:37:57.360Z - debug: studio default theme is: light
+2025-10-03T11:37:57.365Z - info: Creating default express app.
+2025-10-03T11:37:57.410Z - info: jsreport server successfully started on http port: 5488
+2025-10-03T11:37:57.412Z - info: Verifying license key free
+2025-10-03T11:37:57.414Z - info: Using free license
+2025-10-03T11:37:57.422Z - info: pdf footers check started
+2025-10-03T11:37:57.424Z - info: pdf footers check finished without found problems
+2025-10-03T11:37:57.435Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-10-03T11:37:57.437Z - info: Migration successful
+2025-10-03T11:37:57.438Z - debug: Creating samples is disabled
+2025-10-03T11:37:57.439Z - info: Initializing worker threads
+2025-10-03T11:37:57.440Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-10-03T11:37:58.525Z - info: 2 worker threads initialized in 1086ms
+2025-10-03T11:37:58.526Z - info: Starting temp files cleanup with 180000ms threshold
+2025-10-03T11:37:58.527Z - info: reporter initialized
+2025-10-03T11:37:58.530Z - info: Render request 1 queued for execution and waiting for available worker rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:37:58.544Z - info: Starting rendering request 1 rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:37:58.547Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: none } rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:37:58.547Z - debug: Data item not defined for this template. rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:37:58.556Z - debug: Base url not specified, skipping its injection. rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:37:58.557Z - debug: Rendering engine none rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:37:59.243Z - debug: Executing recipe chrome-pdf rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:38:00.117Z - debug: Converting with chrome Chrome/138.0.7204.168 using chrome-pool strategy rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:38:00.293Z - debug: Page request: GET (document) file:///C:/Users/Youcode/AppData/Local/Temp/jsreport/autocleanup/10013a1d-ee73-4271-bc6a-829b4bd560fc-chrome-pdf.html rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:38:00.325Z - debug: Page request finished: GET (document) 200 file:///C:/Users/Youcode/AppData/Local/Temp/jsreport/autocleanup/10013a1d-ee73-4271-bc6a-829b4bd560fc-chrome-pdf.html rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:38:00.327Z - debug: Page request: GET (stylesheet) https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:38:00.533Z - debug: Page request finished: GET (stylesheet) 200 https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:38:00.581Z - debug: Running chrome with params {"timeout":59276,"margin":{},"printBackground":true} rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:38:00.930Z - debug: Skipping storing report. rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd
+2025-10-03T11:38:00.930Z - info: Rendering request 1 finished in 2402 ms rootId=j3kg4ywm90bxbrd, id=j3kg4ywm90bxbrd

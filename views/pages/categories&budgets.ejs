@@ -1,155 +1,601 @@
-<div class="container mt-4">
+<style>
+  /* Container Styles */
+  .categories-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
 
-  <!-- Header with buttons on the left -->
-  <div class="d-flex gap-2 mb-3">
-    <button class="btn btn-primary px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#addCategoryModal" style="border-radius: 8px; font-size: 0.9rem;">
-      <i class="bi bi-plus-circle me-1"></i>Add Category
-    </button>
-    <button class="btn btn-success px-3 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#addBudgetModal" style="border-radius: 8px; font-size: 0.9rem;">
-      <i class="bi bi-plus-circle me-1"></i>Add Budget
-    </button>
+  /* Header Section */
+  .categories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .categories-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  .categories-subtitle {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* Button Styles */
+  .btn-teal {
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-teal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+    color: white;
+  }
+
+  .btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    color: white;
+  }
+
+  .btn-outline-teal {
+    background: white;
+    color: #0d9488;
+    border: 2px solid #0d9488;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-teal:hover {
+    background: #0d9488;
+    color: white;
+  }
+
+  .btn-outline-danger {
+    background: white;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-danger:hover {
+    background: #dc3545;
+    color: white;
+  }
+
+  .btn-outline-warning {
+    background: white;
+    color: #f59e0b;
+    border: 2px solid #f59e0b;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-warning:hover {
+    background: #f59e0b;
+    color: white;
+  }
+
+  .btn-outline-success {
+    background: white;
+    color: #10b981;
+    border: 2px solid #10b981;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-success:hover {
+    background: #10b981;
+    color: white;
+  }
+
+  .btn-outline-secondary {
+    background: white;
+    color: #6c757d;
+    border: 2px solid #6c757d;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-secondary:hover {
+    background: #6c757d;
+    color: white;
+  }
+
+  .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  /* Card Styles */
+  .categories-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  /* Table Styles */
+  .categories-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .categories-table thead {
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+  }
+
+  .categories-table thead th {
+    color: white;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .categories-table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s ease;
+  }
+
+  .categories-table tbody tr:hover {
+    background-color: #f9fafb;
+  }
+
+  .categories-table tbody td {
+    padding: 1rem;
+    color: #374151;
+  }
+
+  .name-cell {
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .amount-cell {
+    font-weight: 700;
+    color: #0d9488;
+    font-size: 1rem;
+  }
+
+  /* Badge Styles */
+  .badge {
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-success {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    color: white;
+  }
+
+  .badge-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+    color: white;
+  }
+
+  .text-muted {
+    color: #9ca3af;
+  }
+
+  .actions-cell {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+
+  .empty-state-icon {
+    font-size: 4rem;
+    color: #d1d5db;
+    margin-bottom: 1rem;
+  }
+
+  .empty-state-text {
+    font-size: 1.125rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Modal Styles */
+  .modal-content {
+    border-radius: 12px;
+    border: none;
+  }
+
+  .modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+  }
+
+  .btn-close:hover {
+    color: #1a1a1a;
+    opacity: 1;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  .modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.875rem;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: #0d9488;
+  }
+
+  .form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background-color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  .form-select:focus {
+    outline: none;
+    border-color: #0d9488;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .categories-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header-actions {
+      width: 100%;
+    }
+
+    .header-actions button {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .categories-table {
+      font-size: 0.875rem;
+    }
+
+    .categories-table thead th,
+    .categories-table tbody td {
+      padding: 0.75rem 0.5rem;
+    }
+
+    .actions-cell {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+</style>
+
+<div class="categories-container">
+  <!-- Header Section -->
+  <div class="categories-header">
+    <div>
+      <h2>Categories & Budgets</h2>
+      <div class="categories-subtitle">Manage your transaction categories and spending limits</div>
+    </div>
+    <div class="header-actions">
+      <button type="button" class="btn-teal" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+        <i class="bi bi-plus-circle"></i> Add Category
+      </button>
+      <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#addBudgetModal">
+        <i class="bi bi-plus-circle"></i> Add Budget
+      </button>
+    </div>
   </div>
 
   <!-- Categories & Budgets Table -->
-  <div class="card border-0 shadow-sm" style="border-radius: 12px; overflow: hidden;">
-    <table class="table table-hover mb-0">
-      <thead style="background-color: #f1f1f1;">
-        <tr>
-          <th class="fw-semibold py-3 px-4 text-dark">Name</th>
-          <th class="fw-semibold py-3 px-4 text-dark">Type</th>
-          <th class="fw-semibold py-3 px-4 text-dark">Limit Amount (MAD)</th>
-          <th class="fw-semibold py-3 px-4 text-dark">Date</th>
-          <th class="fw-semibold py-3 px-4 text-dark">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% categories.forEach(c => { %>
+  <% if (categories && categories.length > 0) { %>
+    <div class="categories-card">
+      <table class="categories-table">
+        <thead>
           <tr>
-            <td class="py-3 px-4 fw-semibold text-dark"><%= c.name %></td>
-            <td class="py-3 px-4">
-              <% if (c.type === 'income') { %>
-                <span class="badge bg-success px-2 py-1" style="border-radius: 6px; font-size:0.85rem;">Income</span>
-              <% } else if (c.type === 'expense') { %>
-                <span class="badge bg-danger px-2 py-1" style="border-radius: 6px; font-size:0.85rem;">Expense</span>
-              <% } else { %>
-                <span class="text-muted">-</span>
-              <% } %>
-            </td>
-            <td class="py-3 px-4">
-              <% if (c.Budgets && c.Budgets.length > 0) { %>
-                <span class="fw-bold text-primary"><%= c.Budgets[0].limitAmount %></span>
-              <% } else { %>
-                <span class="text-muted fst-italic">No budget</span>
-              <% } %>
-            </td>
-            <td class="py-3 px-4 text-muted" style="font-size: 0.85rem;">
-              <% if (c.Budgets && c.Budgets.length > 0) { %>
-                <%= new Date(c.Budgets[0].createdAt).toLocaleDateString() %>
-              <% } else { %>
-                -
-              <% } %>
-            </td>
-            <td class="py-3 px-4">
-              <div class="d-flex gap-2">
-                <!-- Delete Category -->
-                <form action="/categories/delete/<%= c.id %>" method="delete ">
-                  <button type="submit" class="btn btn-outline-danger btn-sm" style="border-radius: 6px; font-size: 0.8rem;">
-                    <i class="bi bi-trash"></i> Delete
+            <th>Name</th>
+            <th>Type</th>
+            <th>Limit Amount</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% categories.forEach(c => { %>
+            <tr>
+              <td class="name-cell"><%= c.name %></td>
+              <td>
+                <% if (c.type === 'income') { %>
+                  <span class="badge badge-success">Income</span>
+                <% } else if (c.type === 'expense') { %>
+                  <span class="badge badge-danger">Expense</span>
+                <% } else { %>
+                  <span class="text-muted">-</span>
+                <% } %>
+              </td>
+              <td>
+                <% if (c.Budgets && c.Budgets.length > 0) { %>
+                  <span class="amount-cell"><%= c.Budgets[0].limitAmount %> MAD</span>
+                <% } else { %>
+                  <span class="text-muted">No budget</span>
+                <% } %>
+              </td>
+              <td class="text-muted">
+                <% if (c.Budgets && c.Budgets.length > 0) { %>
+                  <%= new Date(c.Budgets[0].createdAt).toLocaleDateString() %>
+                <% } else { %>
+                  -
+                <% } %>
+              </td>
+              <td>
+                <div class="actions-cell">
+                  <!-- Edit Category -->
+                  <button type="button" class="btn-outline-teal btn-sm" data-bs-toggle="modal" data-bs-target="#editCategoryModal_<%= c.id %>">
+                    <i class="bi bi-pencil"></i> Edit
                   </button>
-                </form>
 
-                <!-- Remove or Add Budget -->
+                  <!-- Delete Category -->
+                  <form action="/categories/delete/<%= c.id %>" method="delete" style="display:inline;">
+                    <button type="submit" class="btn-outline-danger btn-sm">
+                      <i class="bi bi-trash"></i> Delete
+                    </button>
+                  </form>
+
+                  <!-- Remove or Add Budget -->
                   <% if (c.Budgets && c.Budgets.length > 0) { %>
-                    <form action="/budgets/delete/<%= c.Budgets[0].id %>" method="delete">
-                      <button type="submit" class="btn btn-outline-warning btn-sm" style="border-radius: 6px; font-size: 0.8rem;">
+                    <form action="/budgets/delete/<%= c.Budgets[0].id %>" method="delete" style="display:inline;">
+                      <button type="submit" class="btn-outline-warning btn-sm">
                         <i class="bi bi-x-circle"></i> Remove Budget
                       </button>
                     </form>
                   <% } else { %>
-                  <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#addBudgetModal" style="border-radius: 6px; font-size: 0.8rem;">
-                    <i class="bi bi-plus-circle"></i> Add Budget
-                  </button>
-                <% } %>
-              </div>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  </div>
+                    <button type="button" class="btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#addBudgetModal">
+                      <i class="bi bi-plus-circle"></i> Add Budget
+                    </button>
+                  <% } %>
+                </div>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
 
-  <!-- No categories fallback -->
-  <% if (!categories || categories.length === 0) { %>
-    <div class="text-center py-5">
-      <i class="bi bi-inbox" style="font-size: 3rem; color: #ccc;"></i>
-      <p class="text-muted fs-5 mt-3">No categories added yet.</p>
-      <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Your First Category</button>
+    <!-- Edit Category Modals (outside table) -->
+    <% categories.forEach(c => { %>
+      <div class="modal fade" id="editCategoryModal_<%= c.id %>" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <form action="/categories/update/<%= c.id %>" method="POST">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label class="form-label">Name</label>
+                  <input type="text" name="name" class="form-control" required placeholder="e.g., Groceries, Salary" value="<%= c.name %>">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Description</label>
+                  <input type="text" name="description" class="form-control" placeholder="Optional description" value="<%= c.description || '' %>">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Type</label>
+                  <select name="type" class="form-select" required>
+                    <option value="income" <%= c.type === 'income' ? 'selected' : '' %>>Income</option>
+                    <option value="expense" <%= c.type === 'expense' ? 'selected' : '' %>>Expense</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn-teal">Update Category</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <!-- No categories fallback -->
+    <div class="empty-state">
+      <div class="empty-state-icon">
+        <i class="bi bi-inbox"></i>
+      </div>
+      <div class="empty-state-text">No categories added yet.</div>
+      <button type="button" class="btn-teal" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+        Add Your First Category
+      </button>
     </div>
   <% } %>
-
 </div>
 
 <!-- Add Category Modal -->
 <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <form action="/categories/create" method="POST" class="modal-content border-0 shadow-lg" style="border-radius: 16px; overflow: hidden;">
-      <div class="modal-header text-white" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: none; padding: 1.5rem;">
-        <h5 class="modal-title fw-bold">Add New Category</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4" style="background-color: #f8f9fa;">
-        <div class="mb-3">
-          <label class="form-label fw-semibold text-dark mb-2">Name</label>
-          <input type="text" name="name" class="form-control form-control-lg shadow-sm" required placeholder="e.g., Groceries, Salary" style="border-radius: 10px; padding: 12px 16px;">
+    <div class="modal-content">
+      <form action="/categories/create" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
         </div>
-        <div class="mb-3">
-          <label class="form-label fw-semibold text-dark mb-2">Description</label>
-          <input type="text" name="description" class="form-control form-control-lg shadow-sm" placeholder="Optional description" style="border-radius: 10px; padding: 12px 16px;">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" required placeholder="e.g., Groceries, Salary">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <input type="text" name="description" class="form-control" placeholder="Optional description">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Type</label>
+            <select name="type" class="form-select" required>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </div>
         </div>
-        <div class="mb-3">
-          <label class="form-label fw-semibold text-dark mb-2">Type</label>
-          <select name="type" class="form-select form-select-lg shadow-sm" required style="border-radius: 10px; padding: 12px 16px;">
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-          </select>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-teal">Add Category</button>
         </div>
-      </div>
-      <div class="modal-footer bg-white border-0 p-3" style="gap: 10px;">
-        <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 8px;">Cancel</button>
-        <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 8px;">Add Category</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
 
-<!-- Add Budget Modal (no variables) -->
+<!-- Add Budget Modal -->
 <div class="modal fade" id="addBudgetModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <form action="/budgets/create" method="POST" class="modal-content border-0 shadow-lg" style="border-radius: 16px; overflow: hidden;">
-      <div class="modal-header text-white" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; padding: 1.5rem;">
-        <h5 class="modal-title fw-bold">Add Budget</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4" style="background-color: #f8f9fa;">
-        <div class="mb-3">
-          <label class="form-label fw-semibold text-dark mb-2">Category</label>
-          <select name="categoryId" class="form-select form-select-lg shadow-sm" required style="border-radius: 10px; padding: 12px 16px;">
-            <% categories.forEach(c => { %>
-              <% if (!c.Budgets || c.Budgets.length === 0) { %>
-                <option value="<%= c.id %>"><%= c.name %></option>
-              <% } %>
-            <% }) %>
-          </select>
+    <div class="modal-content">
+      <form action="/budgets/create" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Budget</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
         </div>
-        <div class="mb-3">
-          <label class="form-label fw-semibold text-dark mb-2">Limit Amount (MAD)</label>
-          <input type="number" name="limitAmount" class="form-control form-control-lg shadow-sm" required placeholder="Enter budget amount" style="border-radius: 10px; padding: 12px 16px;">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select name="categoryId" class="form-select" required>
+              <% categories.forEach(c => { %>
+                <% if (!c.Budgets || c.Budgets.length === 0) { %>
+                  <option value="<%= c.id %>"><%= c.name %></option>
+                <% } %>
+              <% }) %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Limit Amount (MAD)</label>
+            <input type="number" name="limitAmount" class="form-control" required placeholder="Enter budget amount" step="0.01">
+          </div>
         </div>
-      </div>
-      <div class="modal-footer bg-white border-0 p-3" style="gap: 10px;">
-        <button type="button" class="btn btn-light px-4 py-2" data-bs-dismiss="modal" style="border-radius: 8px;">Cancel</button>
-        <button type="submit" class="btn btn-success px-4 py-2" style="border-radius: 8px;">Add Budget</button>
-      </div>
-    </form>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-success">Add Budget</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
