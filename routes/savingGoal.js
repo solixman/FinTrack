@@ -13,5 +13,9 @@ router.post('/savingGoal/create',(req,res)=>{
 savingGoalController.create(req,res);
 })
 
+router.post('/savingGoal/addMoney/:id',(req,res)=>{
+    savingGoalController.addMoney(req,res);
+})
+
 
 module.exports = router;
