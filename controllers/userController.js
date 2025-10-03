@@ -1,6 +1,6 @@
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
-
+const UserService=require('../services/userService');
 
 module.exports = {
 
@@ -86,6 +86,14 @@ module.exports = {
         }
 
 
+    },
+
+
+    async generateRepport(req,res){
+
+
+
+        let repportData= UserService.getData(req.session.user.id);
     }
 
 
