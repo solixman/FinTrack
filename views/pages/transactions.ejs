@@ -1,4 +1,3 @@
-Embedded Styles 
 <style>
   /* Container Styles */
   .transactions-container {
@@ -325,10 +324,9 @@ Embedded Styles
   }
 </style>
 
- Transactions Container 
 <div class="transactions-container">
   
-   Header Section 
+    
   <div class="transactions-header">
     <h2>Transactions</h2>
     <button type="button" class="btn-teal" data-bs-toggle="modal" data-bs-target="#transactionModal">
@@ -336,7 +334,6 @@ Embedded Styles
     </button>
   </div>
 
-   Transactions Table Card 
   <div class="transactions-card">
     <table class="transactions-table">
       <thead>
@@ -352,7 +349,6 @@ Embedded Styles
         <% if (transactions.length > 0) { %>
           <% transactions.forEach(t => { %>
             <tr>
-               Amount Column 
               <td>
                 <% if (t.type === 'expense') { %>
                   <span class="amount-expense">-<%= t.amount %> MAD</span>
@@ -361,19 +357,15 @@ Embedded Styles
                 <% } %>
               </td>
 
-               Date Column 
               <td><%= new Date(t.date).toLocaleDateString() %></td>
 
-               Category Column 
               <td>
                 <% const category = categories.find(c => c.id === t.categoryId); %>
                 <%= category ? category.name : "Uncategorized" %>
               </td>
 
-               Type Column 
               <td class="text-capitalize"><%= t.type %></td>
 
-               Actions Column 
               <td>
                 <div class="actions-cell">
                   <button type="button" class="btn-outline-teal btn-sm" data-bs-toggle="modal" data-bs-target="#editTransactionModal<%= t.id %>">
@@ -386,7 +378,6 @@ Embedded Styles
               </td>
             </tr>
 
-             Edit Transaction Modal 
             <div class="modal fade" id="editTransactionModal<%= t.id %>" tabindex="-1" aria-labelledby="editTransactionModalLabel<%= t.id %>" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -433,7 +424,6 @@ Embedded Styles
               </div>
             </div>
 
-             Delete Transaction Modal 
             <div class="modal fade" id="deleteTransactionModal<%= t.id %>" tabindex="-1" aria-labelledby="deleteTransactionModalLabel<%= t.id %>" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -476,7 +466,6 @@ Embedded Styles
 
 </div>
 
- Add Transaction Modal 
 <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
