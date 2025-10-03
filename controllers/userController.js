@@ -1,6 +1,6 @@
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
-
+const UserService = require('../services/userService');
 
 module.exports = {
 
@@ -62,30 +62,46 @@ module.exports = {
         try {
             const { confirmPassword, newPassword, oldPassword } = req.body;
             let user = await User.findByPk(req.session.user.id)
-            
+
             const isRight = await bcrypt.compare(oldPassword, user.password);
             if (!isRight) {
                 req.flash('error', "wrong password");
                 return res.redirect(req.get('referer') || '/user/profile');
             }
-            
+
             if (confirmPassword !== newPassword) {
                 req.flash('error', "new passwords don't match");
                 return res.redirect(req.get('referer') || '/user/profile');
             }
-            
+
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(newPassword, salt);
             await user.save();
             req.flash('message', "password reintialized succesfully ");
             return res.redirect(req.get('referer') || '/user/profile');
-            
+
         } catch (error) {
-             req.flash('error', "something went wrong");
+            req.flash('error', "something went wrong");
             return res.redirect(req.get('referer') || '/user/profile');
         }
 
 
+    },
+
+
+    async generateRepport(req, res) {
+        try {
+            let data = await UserService.getData(req.session.user.id);
+
+            console.log('data is ', data);
+           return  await UserService.generateReport(data,res);
+
+          
+        } catch (error) {
+            req.flash("error", 'something went wrong')
+            console.log(error);
+            return res.redirect(req.get('referer') || '/dashboard');
+        }
     }
 
 

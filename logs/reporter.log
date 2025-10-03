@@ -1,0 +1,709 @@
+2025-10-03T10:33:59.115Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:33:59.118Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:33:59.119Z - info: Extensions location cache not found, crawling directories
+2025-10-03T10:34:15.022Z - info: Found 35 extension(s)
+2025-10-03T10:34:15.052Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:34:15.055Z - debug: Discovered 35 extensions
+2025-10-03T10:34:15.102Z - info: Using extension authentication@4.2.3
+2025-10-03T10:34:15.290Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:34:15.291Z - info: Using extension base@4.0.0
+2025-10-03T10:34:15.295Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:34:15.296Z - info: Using extension cli@4.1.2
+2025-10-03T10:34:15.299Z - info: Using extension components@4.0.2
+2025-10-03T10:34:15.301Z - info: Using extension data@4.1.0
+2025-10-03T10:34:15.302Z - info: Using extension express@4.2.3
+2025-10-03T10:34:15.674Z - info: Using extension freeze@4.0.0
+2025-10-03T10:34:15.676Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:34:15.832Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:34:15.832Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:34:15.834Z - info: Using extension import-export@4.0.8
+2025-10-03T10:34:15.846Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:34:15.848Z - info: Using extension licensing@4.0.5
+2025-10-03T10:34:15.892Z - info: Using extension localization@4.0.1
+2025-10-03T10:34:15.894Z - info: Using extension npm@4.0.1
+2025-10-03T10:34:15.899Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:34:15.902Z - info: Using extension reports@4.1.5
+2025-10-03T10:34:15.907Z - info: Using extension tags@4.0.1
+2025-10-03T10:34:15.909Z - info: Using extension text@4.0.2
+2025-10-03T10:34:15.912Z - info: Using extension version-control@4.1.1
+2025-10-03T10:34:15.927Z - info: Using extension assets@4.2.3
+2025-10-03T10:34:15.942Z - info: Using extension authorization@4.1.0
+2025-10-03T10:34:15.949Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:34:15.950Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:34:15.953Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:34:15.958Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:34:15.958Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:34:15.959Z - info: Using extension docx@4.9.0
+2025-10-03T10:34:15.961Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:34:16.166Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:34:16.167Z - info: Using extension pptx@4.4.2
+2025-10-03T10:34:16.170Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:34:16.198Z - info: Using extension scripts@4.2.0
+2025-10-03T10:34:16.200Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:34:16.202Z - info: Using extension studio@4.3.2
+2025-10-03T10:34:16.298Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:34:16.300Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:34:16.301Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:34:16.302Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:34:16.304Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:34:16.306Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:34:16.306Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:34:16.316Z - debug: studio default theme is: light
+2025-10-03T10:34:16.321Z - info: Creating default express app.
+2025-10-03T10:34:16.335Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:34:16.335Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:05.395Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:41:05.399Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:41:05.411Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:41:05.800Z - info: Found 35 extension(s)
+2025-10-03T10:41:05.826Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:41:05.829Z - debug: Discovered 35 extensions
+2025-10-03T10:41:05.866Z - info: Using extension authentication@4.2.3
+2025-10-03T10:41:06.019Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:41:06.020Z - info: Using extension base@4.0.0
+2025-10-03T10:41:06.024Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:41:06.026Z - info: Using extension cli@4.1.2
+2025-10-03T10:41:06.030Z - info: Using extension components@4.0.2
+2025-10-03T10:41:06.032Z - info: Using extension data@4.1.0
+2025-10-03T10:41:06.033Z - info: Using extension express@4.2.3
+2025-10-03T10:41:06.345Z - info: Using extension freeze@4.0.0
+2025-10-03T10:41:06.347Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:41:06.500Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:41:06.501Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:41:06.502Z - info: Using extension import-export@4.0.8
+2025-10-03T10:41:06.518Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:41:06.520Z - info: Using extension licensing@4.0.5
+2025-10-03T10:41:06.566Z - info: Using extension localization@4.0.1
+2025-10-03T10:41:06.567Z - info: Using extension npm@4.0.1
+2025-10-03T10:41:06.571Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:41:07.516Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:41:07.518Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:41:07.523Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:41:07.859Z - info: Found 35 extension(s)
+2025-10-03T10:41:07.881Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:41:07.885Z - debug: Discovered 35 extensions
+2025-10-03T10:41:07.930Z - info: Using extension authentication@4.2.3
+2025-10-03T10:41:08.141Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:41:08.141Z - info: Using extension base@4.0.0
+2025-10-03T10:41:08.144Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:41:08.146Z - info: Using extension cli@4.1.2
+2025-10-03T10:41:08.151Z - info: Using extension components@4.0.2
+2025-10-03T10:41:08.154Z - info: Using extension data@4.1.0
+2025-10-03T10:41:08.156Z - info: Using extension express@4.2.3
+2025-10-03T10:41:08.554Z - info: Using extension freeze@4.0.0
+2025-10-03T10:41:08.556Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:41:08.700Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:41:08.700Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:41:08.702Z - info: Using extension import-export@4.0.8
+2025-10-03T10:41:08.712Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:41:08.713Z - info: Using extension licensing@4.0.5
+2025-10-03T10:41:08.800Z - info: Using extension localization@4.0.1
+2025-10-03T10:41:08.801Z - info: Using extension npm@4.0.1
+2025-10-03T10:41:08.811Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:41:08.815Z - info: Using extension reports@4.1.5
+2025-10-03T10:41:08.822Z - info: Using extension tags@4.0.1
+2025-10-03T10:41:08.824Z - info: Using extension text@4.0.2
+2025-10-03T10:41:08.826Z - info: Using extension version-control@4.1.1
+2025-10-03T10:41:08.843Z - info: Using extension assets@4.2.3
+2025-10-03T10:41:08.856Z - info: Using extension authorization@4.1.0
+2025-10-03T10:41:08.862Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:41:08.862Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:41:08.864Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:41:08.868Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:41:08.869Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:41:08.870Z - info: Using extension docx@4.9.0
+2025-10-03T10:41:08.872Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:41:09.061Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:41:09.061Z - info: Using extension pptx@4.4.2
+2025-10-03T10:41:09.063Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:41:09.094Z - info: Using extension scripts@4.2.0
+2025-10-03T10:41:09.095Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:41:09.096Z - info: Using extension studio@4.3.2
+2025-10-03T10:41:09.175Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:41:09.177Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:41:09.178Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:41:09.178Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:41:09.180Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:41:09.182Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:41:09.183Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:41:09.194Z - debug: studio default theme is: light
+2025-10-03T10:41:09.198Z - info: Creating default express app.
+2025-10-03T10:41:09.214Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:09.215Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:11.480Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:41:11.482Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:41:11.486Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:41:11.829Z - info: Found 35 extension(s)
+2025-10-03T10:41:11.854Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:41:11.858Z - debug: Discovered 35 extensions
+2025-10-03T10:41:11.898Z - info: Using extension authentication@4.2.3
+2025-10-03T10:41:12.061Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:41:12.062Z - info: Using extension base@4.0.0
+2025-10-03T10:41:12.065Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:41:12.067Z - info: Using extension cli@4.1.2
+2025-10-03T10:41:12.070Z - info: Using extension components@4.0.2
+2025-10-03T10:41:12.073Z - info: Using extension data@4.1.0
+2025-10-03T10:41:12.074Z - info: Using extension express@4.2.3
+2025-10-03T10:41:12.383Z - info: Using extension freeze@4.0.0
+2025-10-03T10:41:12.386Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:41:12.516Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:41:12.517Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:41:12.518Z - info: Using extension import-export@4.0.8
+2025-10-03T10:41:12.530Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:41:12.531Z - info: Using extension licensing@4.0.5
+2025-10-03T10:41:12.572Z - info: Using extension localization@4.0.1
+2025-10-03T10:41:12.573Z - info: Using extension npm@4.0.1
+2025-10-03T10:41:12.580Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:41:12.583Z - info: Using extension reports@4.1.5
+2025-10-03T10:41:12.587Z - info: Using extension tags@4.0.1
+2025-10-03T10:41:12.589Z - info: Using extension text@4.0.2
+2025-10-03T10:41:12.590Z - info: Using extension version-control@4.1.1
+2025-10-03T10:41:12.606Z - info: Using extension assets@4.2.3
+2025-10-03T10:41:12.621Z - info: Using extension authorization@4.1.0
+2025-10-03T10:41:12.626Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:41:12.626Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:41:12.629Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:41:12.633Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:41:12.634Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:41:12.634Z - info: Using extension docx@4.9.0
+2025-10-03T10:41:12.638Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:41:12.830Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:41:12.830Z - info: Using extension pptx@4.4.2
+2025-10-03T10:41:12.832Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:41:12.861Z - info: Using extension scripts@4.2.0
+2025-10-03T10:41:12.863Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:41:12.864Z - info: Using extension studio@4.3.2
+2025-10-03T10:41:12.949Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:41:12.952Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:41:12.953Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:41:12.954Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:41:12.956Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:41:12.958Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:41:12.958Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:41:12.967Z - debug: studio default theme is: light
+2025-10-03T10:41:12.973Z - info: Creating default express app.
+2025-10-03T10:41:12.988Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:12.989Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:20.358Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:41:20.361Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:41:20.365Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:41:20.700Z - info: Found 35 extension(s)
+2025-10-03T10:41:20.726Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:41:20.729Z - debug: Discovered 35 extensions
+2025-10-03T10:41:20.767Z - info: Using extension authentication@4.2.3
+2025-10-03T10:41:20.920Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:41:20.921Z - info: Using extension base@4.0.0
+2025-10-03T10:41:20.924Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:41:20.926Z - info: Using extension cli@4.1.2
+2025-10-03T10:41:20.930Z - info: Using extension components@4.0.2
+2025-10-03T10:41:20.932Z - info: Using extension data@4.1.0
+2025-10-03T10:41:20.934Z - info: Using extension express@4.2.3
+2025-10-03T10:41:21.255Z - info: Using extension freeze@4.0.0
+2025-10-03T10:41:21.257Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:41:21.386Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:41:21.387Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:41:21.389Z - info: Using extension import-export@4.0.8
+2025-10-03T10:41:21.406Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:41:21.407Z - info: Using extension licensing@4.0.5
+2025-10-03T10:41:21.455Z - info: Using extension localization@4.0.1
+2025-10-03T10:41:21.456Z - info: Using extension npm@4.0.1
+2025-10-03T10:41:21.461Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:41:21.465Z - info: Using extension reports@4.1.5
+2025-10-03T10:41:21.472Z - info: Using extension tags@4.0.1
+2025-10-03T10:41:21.474Z - info: Using extension text@4.0.2
+2025-10-03T10:41:21.476Z - info: Using extension version-control@4.1.1
+2025-10-03T10:41:21.496Z - info: Using extension assets@4.2.3
+2025-10-03T10:41:21.510Z - info: Using extension authorization@4.1.0
+2025-10-03T10:41:21.514Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:41:21.515Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:41:21.517Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:41:21.521Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:41:21.522Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:41:21.523Z - info: Using extension docx@4.9.0
+2025-10-03T10:41:21.526Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:41:21.703Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:41:21.704Z - info: Using extension pptx@4.4.2
+2025-10-03T10:41:21.706Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:41:21.730Z - info: Using extension scripts@4.2.0
+2025-10-03T10:41:21.732Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:41:21.733Z - info: Using extension studio@4.3.2
+2025-10-03T10:41:21.822Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:41:21.824Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:41:21.826Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:41:21.826Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:41:21.828Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:41:21.829Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:41:21.830Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:41:21.840Z - debug: studio default theme is: light
+2025-10-03T10:41:21.845Z - info: Creating default express app.
+2025-10-03T10:41:21.862Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:21.863Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:08.290Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:42:08.293Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:42:08.300Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:42:08.684Z - info: Found 35 extension(s)
+2025-10-03T10:42:08.725Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:42:08.728Z - debug: Discovered 35 extensions
+2025-10-03T10:42:08.777Z - info: Using extension authentication@4.2.3
+2025-10-03T10:42:08.960Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:42:08.961Z - info: Using extension base@4.0.0
+2025-10-03T10:42:08.965Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:42:08.966Z - info: Using extension cli@4.1.2
+2025-10-03T10:42:08.969Z - info: Using extension components@4.0.2
+2025-10-03T10:42:08.972Z - info: Using extension data@4.1.0
+2025-10-03T10:42:08.974Z - info: Using extension express@4.2.3
+2025-10-03T10:42:09.344Z - info: Using extension freeze@4.0.0
+2025-10-03T10:42:09.346Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:42:09.488Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:42:09.489Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:42:09.491Z - info: Using extension import-export@4.0.8
+2025-10-03T10:42:09.502Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:42:09.504Z - info: Using extension licensing@4.0.5
+2025-10-03T10:42:09.550Z - info: Using extension localization@4.0.1
+2025-10-03T10:42:09.552Z - info: Using extension npm@4.0.1
+2025-10-03T10:42:09.558Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:42:09.561Z - info: Using extension reports@4.1.5
+2025-10-03T10:42:09.565Z - info: Using extension tags@4.0.1
+2025-10-03T10:42:09.567Z - info: Using extension text@4.0.2
+2025-10-03T10:42:09.568Z - info: Using extension version-control@4.1.1
+2025-10-03T10:42:09.583Z - info: Using extension assets@4.2.3
+2025-10-03T10:42:09.599Z - info: Using extension authorization@4.1.0
+2025-10-03T10:42:09.604Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:42:09.605Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:42:09.607Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:42:09.612Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:42:09.613Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:42:09.614Z - info: Using extension docx@4.9.0
+2025-10-03T10:42:09.617Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:42:09.815Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:42:09.815Z - info: Using extension pptx@4.4.2
+2025-10-03T10:42:09.818Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:42:09.850Z - info: Using extension scripts@4.2.0
+2025-10-03T10:42:09.851Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:42:09.852Z - info: Using extension studio@4.3.2
+2025-10-03T10:42:09.944Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:42:09.946Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:42:09.948Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:42:09.948Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:42:09.950Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:42:09.952Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:42:09.952Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:42:09.964Z - debug: studio default theme is: light
+2025-10-03T10:42:09.968Z - info: Creating default express app.
+2025-10-03T10:42:09.984Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:09.985Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:31.067Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:42:31.070Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:42:31.075Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:42:31.418Z - info: Found 35 extension(s)
+2025-10-03T10:42:31.444Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:42:31.447Z - debug: Discovered 35 extensions
+2025-10-03T10:42:31.494Z - info: Using extension authentication@4.2.3
+2025-10-03T10:42:31.679Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:42:31.680Z - info: Using extension base@4.0.0
+2025-10-03T10:42:31.684Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:42:31.686Z - info: Using extension cli@4.1.2
+2025-10-03T10:42:31.689Z - info: Using extension components@4.0.2
+2025-10-03T10:42:31.691Z - info: Using extension data@4.1.0
+2025-10-03T10:42:31.692Z - info: Using extension express@4.2.3
+2025-10-03T10:42:32.030Z - info: Using extension freeze@4.0.0
+2025-10-03T10:42:32.033Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:42:32.195Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:42:32.196Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:42:32.198Z - info: Using extension import-export@4.0.8
+2025-10-03T10:42:32.208Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:42:32.210Z - info: Using extension licensing@4.0.5
+2025-10-03T10:42:32.255Z - info: Using extension localization@4.0.1
+2025-10-03T10:42:32.256Z - info: Using extension npm@4.0.1
+2025-10-03T10:42:32.263Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:42:32.266Z - info: Using extension reports@4.1.5
+2025-10-03T10:42:32.269Z - info: Using extension tags@4.0.1
+2025-10-03T10:42:32.271Z - info: Using extension text@4.0.2
+2025-10-03T10:42:32.272Z - info: Using extension version-control@4.1.1
+2025-10-03T10:42:32.286Z - info: Using extension assets@4.2.3
+2025-10-03T10:42:32.299Z - info: Using extension authorization@4.1.0
+2025-10-03T10:42:32.305Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:42:32.305Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:42:32.307Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:42:32.311Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:42:32.312Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:42:32.313Z - info: Using extension docx@4.9.0
+2025-10-03T10:42:32.316Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:42:32.541Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:42:32.542Z - info: Using extension pptx@4.4.2
+2025-10-03T10:42:32.544Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:42:32.574Z - info: Using extension scripts@4.2.0
+2025-10-03T10:42:32.575Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:42:32.576Z - info: Using extension studio@4.3.2
+2025-10-03T10:42:32.662Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:42:32.664Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:42:32.666Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:42:32.666Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:42:32.669Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:42:32.670Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:42:32.671Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:42:32.683Z - debug: studio default theme is: light
+2025-10-03T10:42:32.687Z - info: Creating default express app.
+2025-10-03T10:42:32.704Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:32.705Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:52.727Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:42:52.732Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:42:52.742Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:42:53.221Z - info: Found 35 extension(s)
+2025-10-03T10:42:53.281Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:42:53.285Z - debug: Discovered 35 extensions
+2025-10-03T10:42:53.371Z - info: Using extension authentication@4.2.3
+2025-10-03T10:42:53.669Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:42:53.669Z - info: Using extension base@4.0.0
+2025-10-03T10:42:53.676Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:42:53.680Z - info: Using extension cli@4.1.2
+2025-10-03T10:42:53.689Z - info: Using extension components@4.0.2
+2025-10-03T10:42:53.695Z - info: Using extension data@4.1.0
+2025-10-03T10:42:53.699Z - info: Using extension express@4.2.3
+2025-10-03T10:42:54.269Z - info: Using extension freeze@4.0.0
+2025-10-03T10:42:54.272Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:42:54.484Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:42:54.485Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:42:54.488Z - info: Using extension import-export@4.0.8
+2025-10-03T10:42:54.514Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:42:54.516Z - info: Using extension licensing@4.0.5
+2025-10-03T10:42:54.580Z - info: Using extension localization@4.0.1
+2025-10-03T10:42:54.582Z - info: Using extension npm@4.0.1
+2025-10-03T10:42:54.589Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:42:54.596Z - info: Using extension reports@4.1.5
+2025-10-03T10:42:54.601Z - info: Using extension tags@4.0.1
+2025-10-03T10:42:54.605Z - info: Using extension text@4.0.2
+2025-10-03T10:42:54.606Z - info: Using extension version-control@4.1.1
+2025-10-03T10:42:54.633Z - info: Using extension assets@4.2.3
+2025-10-03T10:42:54.661Z - info: Using extension authorization@4.1.0
+2025-10-03T10:42:54.670Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:42:54.670Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:42:54.674Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:42:54.680Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:42:54.681Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:42:54.682Z - info: Using extension docx@4.9.0
+2025-10-03T10:42:54.690Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:42:55.037Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:42:55.038Z - info: Using extension pptx@4.4.2
+2025-10-03T10:42:55.043Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:42:55.092Z - info: Using extension scripts@4.2.0
+2025-10-03T10:42:55.095Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:42:55.097Z - info: Using extension studio@4.3.2
+2025-10-03T10:42:55.309Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:42:55.312Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:42:55.315Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:42:55.316Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:42:55.321Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:42:55.324Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:42:55.325Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:42:55.357Z - debug: studio default theme is: light
+2025-10-03T10:42:55.369Z - info: Creating default express app.
+2025-10-03T10:42:55.406Z - info: jsreport server successfully started on http port: 5488
+2025-10-03T10:42:55.409Z - info: Verifying license key free
+2025-10-03T10:42:55.410Z - info: Using free license
+2025-10-03T10:42:55.418Z - info: pdf footers check started
+2025-10-03T10:42:55.419Z - info: pdf footers check finished without found problems
+2025-10-03T10:42:55.425Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-10-03T10:42:55.426Z - info: Migration successful
+2025-10-03T10:42:55.427Z - debug: Creating samples is disabled
+2025-10-03T10:42:55.428Z - info: Initializing worker threads
+2025-10-03T10:42:55.428Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-10-03T10:42:56.984Z - info: 2 worker threads initialized in 1556ms
+2025-10-03T10:42:56.985Z - info: Starting temp files cleanup with 180000ms threshold
+2025-10-03T10:42:56.986Z - info: reporter initialized
+2025-10-03T10:42:56.992Z - info: Render request 1 queued for execution and waiting for available worker rootId=9cka97b1ev9spte, id=9cka97b1ev9spte
+2025-10-03T10:42:57.014Z - info: Starting rendering request 1 rootId=9cka97b1ev9spte, id=9cka97b1ev9spte
+2025-10-03T10:42:57.017Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: ejs } rootId=9cka97b1ev9spte, id=9cka97b1ev9spte
+2025-10-03T10:42:57.017Z - debug: Data item not defined for this template. rootId=9cka97b1ev9spte, id=9cka97b1ev9spte
+2025-10-03T10:42:57.025Z - debug: Base url not specified, skipping its injection. rootId=9cka97b1ev9spte, id=9cka97b1ev9spte
+2025-10-03T10:42:57.029Z - warn: Error when processing render request 1
+(because) engine 'ejs' not found. If this is a custom engine make sure it's properly installed from npm
+Error: Engine 'ejs' not found. If this is a custom engine make sure it's properly installed from npm
+  at module.exports (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\createError.js:10:13)
+  at WorkerReporter.createError (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\reporter.js:53:12)
+  at invokeRender (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:38:22)
+  at WorkerReporter._render (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:148:13)
+  at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+  at async C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\worker\reporter.js:233:24
+  at async processAndResponse (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\advanced-workers\lib\workerHandler.js:42:17) rootId=9cka97b1ev9spte, id=9cka97b1ev9spte
+2025-10-03T10:42:57.029Z - warn: Rendering request 1 finished with error in 42 ms rootId=9cka97b1ev9spte, id=9cka97b1ev9spte
+2025-10-03T10:44:45.317Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:44:45.319Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:44:45.325Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:44:45.665Z - info: Found 35 extension(s)
+2025-10-03T10:44:45.691Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:44:45.693Z - debug: Discovered 35 extensions
+2025-10-03T10:44:45.735Z - info: Using extension authentication@4.2.3
+2025-10-03T10:44:45.893Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:44:45.895Z - info: Using extension base@4.0.0
+2025-10-03T10:44:45.899Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:44:45.901Z - info: Using extension cli@4.1.2
+2025-10-03T10:44:45.906Z - info: Using extension components@4.0.2
+2025-10-03T10:44:45.908Z - info: Using extension data@4.1.0
+2025-10-03T10:44:45.913Z - info: Using extension express@4.2.3
+2025-10-03T10:44:46.226Z - info: Using extension freeze@4.0.0
+2025-10-03T10:44:46.228Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:44:46.363Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:44:46.364Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:44:46.365Z - info: Using extension import-export@4.0.8
+2025-10-03T10:44:46.374Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:44:46.376Z - info: Using extension licensing@4.0.5
+2025-10-03T10:44:46.421Z - info: Using extension localization@4.0.1
+2025-10-03T10:44:46.423Z - info: Using extension npm@4.0.1
+2025-10-03T10:44:46.427Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:44:46.431Z - info: Using extension reports@4.1.5
+2025-10-03T10:44:46.435Z - info: Using extension tags@4.0.1
+2025-10-03T10:44:46.437Z - info: Using extension text@4.0.2
+2025-10-03T10:44:46.439Z - info: Using extension version-control@4.1.1
+2025-10-03T10:44:46.457Z - info: Using extension assets@4.2.3
+2025-10-03T10:44:46.468Z - info: Using extension authorization@4.1.0
+2025-10-03T10:44:46.474Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:44:46.474Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:44:46.478Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:44:46.481Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:44:46.482Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:44:46.482Z - info: Using extension docx@4.9.0
+2025-10-03T10:44:46.485Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:44:46.660Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:44:46.660Z - info: Using extension pptx@4.4.2
+2025-10-03T10:44:46.663Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:44:46.686Z - info: Using extension scripts@4.2.0
+2025-10-03T10:44:46.688Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:44:46.689Z - info: Using extension studio@4.3.2
+2025-10-03T10:44:46.765Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:44:46.767Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:44:46.769Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:44:46.769Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:44:46.771Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:44:46.773Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:44:46.774Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:44:46.783Z - debug: studio default theme is: light
+2025-10-03T10:44:46.789Z - info: Creating default express app.
+2025-10-03T10:44:46.804Z - info: jsreport server successfully started on http port: 5488
+2025-10-03T10:44:46.806Z - info: Verifying license key free
+2025-10-03T10:44:46.807Z - info: Using free license
+2025-10-03T10:44:46.809Z - info: pdf footers check started
+2025-10-03T10:44:46.810Z - info: pdf footers check finished without found problems
+2025-10-03T10:44:46.814Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-10-03T10:44:46.815Z - info: Migration successful
+2025-10-03T10:44:46.816Z - debug: Creating samples is disabled
+2025-10-03T10:44:46.817Z - info: Initializing worker threads
+2025-10-03T10:44:46.817Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-10-03T10:44:47.387Z - info: 2 worker threads initialized in 570ms
+2025-10-03T10:44:47.388Z - info: Starting temp files cleanup with 180000ms threshold
+2025-10-03T10:44:47.389Z - info: reporter initialized
+2025-10-03T10:44:47.392Z - info: Render request 1 queued for execution and waiting for available worker rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:47.401Z - info: Starting rendering request 1 rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:47.402Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: none } rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:47.402Z - debug: Data item not defined for this template. rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:47.407Z - debug: Base url not specified, skipping its injection. rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:47.408Z - debug: Rendering engine none rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:47.776Z - debug: Executing recipe chrome-pdf rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:48.680Z - debug: Converting with chrome Chrome/138.0.7204.168 using chrome-pool strategy rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:48.815Z - debug: Page request: GET (document) file:///C:/Users/Youcode/AppData/Local/Temp/jsreport/autocleanup/abe05260-aab6-4305-bff4-16e491003683-chrome-pdf.html rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:48.838Z - debug: Page request finished: GET (document) 200 file:///C:/Users/Youcode/AppData/Local/Temp/jsreport/autocleanup/abe05260-aab6-4305-bff4-16e491003683-chrome-pdf.html rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:48.862Z - debug: Page request: GET (stylesheet) https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:49.021Z - debug: Page request finished: GET (stylesheet) 200 https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:49.095Z - debug: Running chrome with params {"timeout":59606,"margin":{},"printBackground":true} rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:49.484Z - debug: Skipping storing report. rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:44:49.484Z - info: Rendering request 1 finished in 2094 ms rootId=zczlgiqlxthegfj, id=zczlgiqlxthegfj
+2025-10-03T10:48:37.001Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T10:48:37.003Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:48:37.011Z - info: Extensions location cache contains up to date information, skipping crawling in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T10:48:37.507Z - info: Found 35 extension(s)
+2025-10-03T10:48:37.555Z - debug: Writing extension locations cache to C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json
+2025-10-03T10:48:37.558Z - debug: Discovered 35 extensions
+2025-10-03T10:48:37.629Z - info: Using extension authentication@4.2.3
+2025-10-03T10:48:37.900Z - debug: Extension authentication@4.2.3 was disabled
+2025-10-03T10:48:37.902Z - info: Using extension base@4.0.0
+2025-10-03T10:48:37.908Z - info: Using extension child-templates@4.1.0
+2025-10-03T10:48:37.911Z - info: Using extension cli@4.1.2
+2025-10-03T10:48:37.917Z - info: Using extension components@4.0.2
+2025-10-03T10:48:37.920Z - info: Using extension data@4.1.0
+2025-10-03T10:48:37.922Z - info: Using extension express@4.2.3
+2025-10-03T10:48:38.442Z - info: Using extension freeze@4.0.0
+2025-10-03T10:48:38.447Z - info: Using extension fs-store@4.1.1
+2025-10-03T10:48:38.701Z - debug: Extension fs-store@4.1.1 was disabled
+2025-10-03T10:48:38.702Z - info: Using extension handlebars@4.0.1
+2025-10-03T10:48:38.704Z - info: Using extension import-export@4.0.8
+2025-10-03T10:48:38.726Z - info: Using extension jsrender@4.0.0
+2025-10-03T10:48:38.729Z - info: Using extension licensing@4.0.5
+2025-10-03T10:48:38.811Z - info: Using extension localization@4.0.1
+2025-10-03T10:48:38.814Z - info: Using extension npm@4.0.1
+2025-10-03T10:48:38.822Z - info: Using extension pdf-utils@4.4.1
+2025-10-03T10:48:38.826Z - info: Using extension reports@4.1.5
+2025-10-03T10:48:38.834Z - info: Using extension tags@4.0.1
+2025-10-03T10:48:38.837Z - info: Using extension text@4.0.2
+2025-10-03T10:48:38.840Z - info: Using extension version-control@4.1.1
+2025-10-03T10:48:38.862Z - info: Using extension assets@4.2.3
+2025-10-03T10:48:38.890Z - info: Using extension authorization@4.1.0
+2025-10-03T10:48:38.897Z - debug: Extension authorization@4.1.0 was disabled
+2025-10-03T10:48:38.897Z - info: Using extension browser-client@4.1.0
+2025-10-03T10:48:38.900Z - info: Using extension chrome-pdf@4.3.0
+2025-10-03T10:48:38.908Z - debug: Chrome strategy is chrome-pool, numberOfWorkers: 1
+2025-10-03T10:48:38.909Z - debug: Chrome custom launch options are protocolTimeout=60000
+2025-10-03T10:48:38.910Z - info: Using extension docx@4.9.0
+2025-10-03T10:48:38.916Z - info: Using extension html-to-xlsx@4.2.4
+2025-10-03T10:48:39.205Z - info: html-to-xlsx detected chrome as available html engine
+2025-10-03T10:48:39.206Z - info: Using extension pptx@4.4.2
+2025-10-03T10:48:39.210Z - info: Using extension scheduling@4.1.0
+2025-10-03T10:48:39.241Z - info: Using extension scripts@4.2.0
+2025-10-03T10:48:39.244Z - info: Using extension static-pdf@4.1.0
+2025-10-03T10:48:39.246Z - info: Using extension studio@4.3.2
+2025-10-03T10:48:39.413Z - info: Using extension xlsx@4.5.1
+2025-10-03T10:48:39.418Z - info: Using extension public-templates@4.0.0
+2025-10-03T10:48:39.422Z - debug: Extension public-templates@4.0.0 was disabled
+2025-10-03T10:48:39.423Z - info: Using extension sample-template@4.0.2
+2025-10-03T10:48:39.427Z - info: Using extension studio-theme-dark@4.0.0
+2025-10-03T10:48:39.431Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2025-10-03T10:48:39.431Z - info: Using memory provider for template store. The saved templates will be lost after restart
+2025-10-03T10:48:39.453Z - debug: studio default theme is: light
+2025-10-03T10:48:39.461Z - info: Creating default express app.
+2025-10-03T10:48:39.495Z - info: jsreport server successfully started on http port: 5488
+2025-10-03T10:48:39.497Z - info: Verifying license key free
+2025-10-03T10:48:39.502Z - info: Using free license
+2025-10-03T10:48:39.509Z - info: pdf footers check started
+2025-10-03T10:48:39.510Z - info: pdf footers check finished without found problems
+2025-10-03T10:48:39.514Z - info: Migrating templates chrome settings (waitForNetworkIddle -> waitForNetworkIdle)
+2025-10-03T10:48:39.515Z - info: Migration successful
+2025-10-03T10:48:39.516Z - debug: Creating samples is disabled
+2025-10-03T10:48:39.517Z - info: Initializing worker threads
+2025-10-03T10:48:39.518Z - debug: Extensions in workers: base, child-templates, components, data, express, handlebars, jsrender, localization, npm, pdf-utils, reports, text, version-control, assets, browser-client, chrome-pdf, docx, html-to-xlsx, pptx, scripts, static-pdf, studio, xlsx
+2025-10-03T10:48:40.506Z - info: 2 worker threads initialized in 989ms
+2025-10-03T10:48:40.507Z - info: Starting temp files cleanup with 180000ms threshold
+2025-10-03T10:48:40.508Z - info: reporter initialized
+2025-10-03T10:48:40.516Z - info: Render request 1 queued for execution and waiting for available worker rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:40.542Z - info: Starting rendering request 1 rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:40.544Z - info: Rendering anonymous template { recipe: chrome-pdf, engine: none } rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:40.545Z - debug: Data item not defined for this template. rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:40.555Z - debug: Base url not specified, skipping its injection. rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:40.556Z - debug: Rendering engine none rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:41.171Z - debug: Executing recipe chrome-pdf rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:41.744Z - debug: Converting with chrome Chrome/138.0.7204.168 using chrome-pool strategy rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:41.859Z - debug: Page request: GET (document) file:///C:/Users/Youcode/AppData/Local/Temp/jsreport/autocleanup/8876d45d-5c7b-4af5-878d-dae4e2b31b31-chrome-pdf.html rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:41.875Z - debug: Page request finished: GET (document) 200 file:///C:/Users/Youcode/AppData/Local/Temp/jsreport/autocleanup/8876d45d-5c7b-4af5-878d-dae4e2b31b31-chrome-pdf.html rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:41.879Z - debug: Page request: GET (stylesheet) https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:42.014Z - debug: Page request finished: GET (stylesheet) 200 https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:42.059Z - debug: Running chrome with params {"timeout":59326,"margin":{},"printBackground":true} rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:42.323Z - debug: Skipping storing report. rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T10:48:42.323Z - info: Rendering request 1 finished in 1813 ms rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3

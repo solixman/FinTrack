@@ -1,0 +1,132 @@
+2025-10-03T10:34:16.335Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:34:16.335Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:09.214Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:09.215Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:12.988Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:12.989Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:21.862Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:41:21.863Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:09.984Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:09.985Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:32.704Z - error: Error when starting http server on port 3000 Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
+2025-10-03T10:42:32.705Z - error: Error occurred during reporter init: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1907:16)
+    at listenInCluster (node:net:1964:12)
+    at Server.listen (node:net:2066:7)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:22:12
+    at new Promise (<anonymous>)
+    at startAsync (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:16:10)
+    at C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:50:14
+    at Object.start (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:125:13)
+    at Object.<anonymous> (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-express\lib\main.js:333:30)
+    at async ListenerCollection.fire (C:\Users\Youcode\Desktop\FinTrack\node_modules\@jsreport\jsreport-core\lib\shared\listenerCollection.js:157:21)
