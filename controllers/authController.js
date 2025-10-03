@@ -98,6 +98,7 @@ module.exports = {
 
             req.session.user = {};
             req.session.isLoggedIn = false;
+             return res.redirect('/');
         } catch (error) {
             req.flash('error', "something went wrong");
             return res.redirect('/dashboard')
