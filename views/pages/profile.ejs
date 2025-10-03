@@ -8,106 +8,541 @@
   const displayDob = user && user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString() : '—';
   const displayBalance = (user && user.balance != null) ? Number(user.balance).toFixed(2) : '0.00';
 %>
- 
-<div class="card shadow-sm overflow-hidden">
-  <div class="card-body p-4">
-    <div class="d-flex align-items-center justify-content-between mb-4">
-      <div>
-        <h3 class="mb-0">Profile</h3>
-        <small class="text-muted">Manage your account information</small>
-      </div>
 
-      <div class="d-flex gap-2">
-        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-          <i class="bi bi-pencil-square"></i> Edit Profile
-        </button>
-        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
-          <i class="bi bi-key"></i> Change Password
-        </button>
-      </div>
+<style>
+  /* Container Styles */
+  .profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Header Section */
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .profile-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  .profile-subtitle {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+  }
+
+  /* Button Styles */
+  .btn-teal {
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-teal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+    color: white;
+  }
+
+  .btn-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    color: white;
+  }
+
+  .btn-outline-secondary {
+    background: white;
+    color: #6c757d;
+    border: 2px solid #6c757d;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-secondary:hover {
+    background: #6c757d;
+    color: white;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* Card Styles */
+  .profile-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .profile-card-body {
+    padding: 2rem;
+  }
+
+  /* Avatar Section */
+  .avatar-section {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .avatar-wrapper {
+    margin-bottom: 1.5rem;
+  }
+
+  .avatar-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .avatar-placeholder {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e9ecef, #dee2e6);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 44px;
+    color: #495057;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .user-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+  }
+
+  .user-email {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Stats Card */
+  .stats-card {
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .stat-row:last-child {
+    border-bottom: none;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-weight: 500;
+  }
+
+  .stat-value {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .badge {
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-primary {
+    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+    color: white;
+  }
+
+  .badge-secondary {
+    background: #6c757d;
+    color: white;
+  }
+
+  .badge-success {
+    background: #10b981;
+    color: white;
+  }
+
+  .badge-warning {
+    background: #f59e0b;
+    color: white;
+  }
+
+  .badge-danger {
+    background: #ef4444;
+    color: white;
+  }
+
+  /* Info Section */
+  .info-section {
+    padding: 1.5rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-field {
+    margin-bottom: 0;
+  }
+
+  .info-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #6c757d;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-value {
+    font-size: 1rem;
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+
+  .info-full {
+    grid-column: 1 / -1;
+  }
+
+  .info-text {
+    color: #6c757d;
+    line-height: 1.6;
+  }
+
+  .divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1.5rem 0;
+  }
+
+  .timestamp {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 1rem;
+  }
+
+  /* Modal Styles */
+  .modal-content {
+    border-radius: 12px;
+    border: none;
+  }
+
+  .modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+  }
+
+  .btn-close:hover {
+    color: #1a1a1a;
+    opacity: 1;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  .modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.875rem;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: #0d9488;
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .avatar-preview-section {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .avatar-preview {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+
+  .avatar-preview-placeholder {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f1f3f5, #e9ecef);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #495057;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+
+  .invalid-feedback {
+    display: none;
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header-actions {
+      width: 100%;
+    }
+
+    .header-actions button {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .profile-card-body {
+      padding: 1rem;
+    }
+
+    .avatar-section {
+      padding: 1rem;
+    }
+
+    .info-section {
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .btn-teal, .btn-warning {
+      font-size: 0.875rem;
+      padding: 0.625rem 1.25rem;
+    }
+  }
+</style>
+
+<div class="profile-container">
+  <!-- Header Section -->
+  <div class="profile-header">
+    <div>
+      <h2>Profile</h2>
+      <div class="profile-subtitle">Manage your account information</div>
     </div>
+    <div class="header-actions">
+      <button type="button" class="btn-teal" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+        <i class="bi bi-pencil-square"></i> Edit Profile
+      </button>
+      <button type="button" class="btn-warning" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+        <i class="bi bi-key"></i> Change Password
+      </button>
+    </div>
+  </div>
 
-    <div class="row gx-4">
-      <!-- Left: avatar & quick stats -->
-      <div class="col-md-4 text-center">
-        <div class="mb-3 d-inline-block">
-          <% if (avatarUrl) { %>
-            <img src="<%= avatarUrl %>" alt="Avatar" class="rounded-circle shadow-sm" style="width:160px; height:160px; object-fit:cover;">
-          <% } else { %>
-            <div class="rounded-circle d-inline-flex align-items-center justify-content-center"
-                 style="width:160px; height:160px; background: linear-gradient(135deg,#e9ecef,#dee2e6); font-size:44px; color:#495057;">
-              <%= initials %>
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <div class="profile-card-body">
+      <div class="row gx-4">
+        <!-- Left: Avatar & Quick Stats -->
+        <div class="col-md-4">
+          <div class="avatar-section">
+            <div class="avatar-wrapper">
+              <% if (avatarUrl) { %>
+                <img src="<%= avatarUrl %>" alt="Avatar" class="avatar-img">
+              <% } else { %>
+                <div class="avatar-placeholder">
+                  <%= initials %>
+                </div>
+              <% } %>
             </div>
-          <% } %>
-        </div>
 
-        <h5 class="mb-0"><%= user.name || 'Unnamed User' %></h5>
-        <small class="text-muted d-block mb-3"><%= user.email %></small>
+            <div class="user-name"><%= user.name || 'Unnamed User' %></div>
+            <div class="user-email"><%= user.email %></div>
 
-        <div class="mt-3">
-          <div class="border rounded p-3 text-start">
-            <div class="d-flex justify-content-between">
-              <small class="text-muted">Balance</small>
-              <strong><%= displayBalance %> <%= user.currency || 'MAD' %></strong>
-            </div>
-            <div class="d-flex justify-content-between mt-2">
-              <small class="text-muted">Role</small>
-              <span class="badge <%= user.role === 'admin' ? 'bg-primary' : 'bg-secondary' %> text-white">
-                <%= user.role || 'user' %>
-              </span>
-            </div>
-            <div class="d-flex justify-content-between mt-2">
-              <small class="text-muted">Status</small>
-              <span class="badge <%= user.status === 'active' ? 'bg-success' : user.status === 'suspended' ? 'bg-warning text-dark' : 'bg-danger' %>">
-                <%= user.status || 'active' %>
-              </span>
+            <div class="stats-card">
+              <div class="stat-row">
+                <span class="stat-label">Balance</span>
+                <span class="stat-value"><%= displayBalance %> <%= user.currency || 'MAD' %></span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">Role</span>
+                <span class="badge <%= user.role === 'admin' ? 'badge-primary' : 'badge-secondary' %>">
+                  <%= user.role || 'user' %>
+                </span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">Status</span>
+                <span class="badge <%= user.status === 'active' ? 'badge-success' : user.status === 'suspended' ? 'badge-warning' : 'badge-danger' %>">
+                  <%= user.status || 'active' %>
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Right: detailed info -->
-      <div class="col-md-8">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <label class="form-label small text-muted">Full name</label>
-            <div class="fw-semibold"><%= user.name || '—' %></div>
+        <!-- Right: Detailed Info -->
+        <div class="col-md-8">
+          <div class="info-section">
+            <div class="info-grid">
+              <div class="info-field">
+                <div class="info-label">Full Name</div>
+                <div class="info-value"><%= user.name || '—' %></div>
+              </div>
+              <div class="info-field">
+                <div class="info-label">Email</div>
+                <div class="info-value"><%= user.email || '—' %></div>
+              </div>
+              <div class="info-field">
+                <div class="info-label">Phone</div>
+                <div class="info-value"><%= user.phoneNumber || '—' %></div>
+              </div>
+              <div class="info-field">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value"><%= displayDob %></div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="info-field info-full">
+              <div class="info-label">Address</div>
+              <div class="info-value"><%= user.address || '—' %></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="info-field info-full">
+              <div class="info-label">Bio</div>
+              <div class="info-text"><%= user.bio || 'No bio provided.' %></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="info-field info-full">
+              <div class="info-label">Preferences</div>
+              <div class="info-text"><%= user.preferences ? String(user.preferences) : '—' %></div>
+            </div>
+
+            <div class="timestamp">
+              Account created: <%= user.createdAt ? new Date(user.createdAt).toLocaleString() : '—' %>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <label class="form-label small text-muted">Email</label>
-            <div class="fw-semibold"><%= user.email || '—' %></div>
-          </div>
-        </div>
-
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <label class="form-label small text-muted">Phone</label>
-            <div class="fw-semibold"><%= user.phoneNumber || '—' %></div>
-          </div>
-          <div class="col-sm-6">
-            <label class="form-label small text-muted">Date of birth</label>
-            <div class="fw-semibold"><%= displayDob %></div>
-          </div>
-        </div>
-
-        <div class="mb-2">
-          <label class="form-label small text-muted">Address</label>
-          <div class="fw-semibold"><%= user.address || '—' %></div>
-        </div>
-
-        <div class="mb-2">
-          <label class="form-label small text-muted">Bio</label>
-          <div class="text-muted"><%= user.bio || 'No bio provided.' %></div>
-        </div>
-
-        <div class="mb-2">
-          <label class="form-label small text-muted">Preferences</label>
-          <div class="text-muted"><%= user.preferences ? String(user.preferences) : '—' %></div>
-        </div>
-
-        <div class="mt-4">
-          <small class="text-muted">Account created</small>
-          <div class="text-muted"><%= user.createdAt ? new Date(user.createdAt).toLocaleString() : '—' %></div>
         </div>
       </div>
     </div>
@@ -121,21 +556,20 @@
       <form action="/user/update" method="POST">
         <div class="modal-header">
           <h5 class="modal-title">Edit Profile</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
         </div>
         <div class="modal-body">
           <div class="row gx-3">
-            <div class="col-md-4 text-center">
-              <div class="mb-3">
+            <div class="col-md-4">
+              <div class="avatar-preview-section">
                 <% if (avatarUrl) { %>
-                  <img id="avatarPreview" src="<%= avatarUrl %>" alt="avatar preview" class="rounded-circle shadow-sm" style="width:140px;height:140px;object-fit:cover;">
+                  <img id="avatarPreview" src="<%= avatarUrl %>" alt="avatar preview" class="avatar-preview">
                 <% } else { %>
-                  <div id="avatarPreview" class="rounded-circle d-inline-flex align-items-center justify-content-center"
-                       style="width:140px;height:140px;background:#f1f3f5;font-size:32px;color:#495057;">
+                  <div id="avatarPreview" class="avatar-preview-placeholder">
                     <%= initials %>
                   </div>
                 <% } %>
-                <div class="mt-2">
+                <div class="form-group">
                   <label class="form-label">Avatar URL</label>
                   <input type="url" class="form-control" name="avatar" placeholder="https://example.com/image.jpg" value="<%= user.avatar || '' %>">
                 </div>
@@ -143,43 +577,47 @@
             </div>
 
             <div class="col-md-8">
-              <div class="mb-3">
+              <div class="form-group">
                 <label class="form-label">Full name</label>
                 <input name="name" type="text" class="form-control" value="<%= user.name || '' %>" required>
               </div>
 
-              <div class="mb-3">
+              <div class="form-group">
                 <label class="form-label">Email</label>
                 <input name="email" type="email" class="form-control" value="<%= user.email || '' %>" required>
               </div>
 
               <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label class="form-label">Phone</label>
-                  <input name="phoneNumber" type="text" class="form-control" value="<%= user.phoneNumber || '' %>">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Phone</label>
+                    <input name="phoneNumber" type="text" class="form-control" value="<%= user.phoneNumber || '' %>">
+                  </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                  <label class="form-label">Currency</label>
-                  <input name="currency" type="text" class="form-control" value="<%= user.currency || 'MAD' %>" required>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Currency</label>
+                    <input name="currency" type="text" class="form-control" value="<%= user.currency || 'MAD' %>" required>
+                  </div>
                 </div>
               </div>
 
-              <div class="mb-3">
+              <div class="form-group">
                 <label class="form-label">Date of Birth</label>
                 <input name="dateOfBirth" type="date" class="form-control" value="<%= dobInput %>">
               </div>
 
-              <div class="mb-3">
+              <div class="form-group">
                 <label class="form-label">Address</label>
                 <textarea name="address" class="form-control" rows="2"><%= user.address || '' %></textarea>
               </div>
 
-              <div class="mb-3">
+              <div class="form-group">
                 <label class="form-label">Bio</label>
                 <textarea name="bio" class="form-control" rows="3"><%= user.bio || '' %></textarea>
               </div>
 
-              <div class="mb-3">
+              <div class="form-group">
                 <label class="form-label">Preferences (JSON/text)</label>
                 <textarea name="preferences" class="form-control" rows="2"><%= user.preferences || '' %></textarea>
               </div>
@@ -188,36 +626,36 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-teal">Save changes</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-
+<!-- Change Password Modal -->
 <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content">
       <form id="changePasswordForm" action="/user/change-password" method="POST" novalidate>
         <div class="modal-header">
           <h5 class="modal-title">Change Password</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
         </div>
 
         <div class="modal-body">
-          <div class="mb-3">
+          <div class="form-group">
             <label class="form-label">Old password</label>
             <input name="oldPassword" type="password" class="form-control" required>
           </div>
 
-          <div class="mb-3">
+          <div class="form-group">
             <label class="form-label">New password</label>
             <input id="newPassword" name="newPassword" type="password" class="form-control" minlength="8" required>
           </div>
 
-          <div class="mb-3">
+          <div class="form-group">
             <label class="form-label">Confirm new password</label>
             <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" minlength="8" required>
             <div class="invalid-feedback" id="passwordMismatchFeedback">Passwords do not match.</div>
@@ -225,8 +663,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-warning">Update password</button>
+          <button type="button" class="btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn-warning">Update password</button>
         </div>
       </form>
     </div>
