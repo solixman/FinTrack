@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Budget, {foreignKey: 'categoryId'})
     }
   }
+
+  
   Category.init({
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
