@@ -90,10 +90,18 @@ module.exports = {
 
 
     async generateRepport(req,res){
+        try {
+            let data= await UserService.getData(req.session.user.id);
 
+            console.log('data is '+data);
+            return res.render('../views/report/report.ejs',{data:data});
+            
 
-
-        let repportData= UserService.getData(req.session.user.id);
+        } catch (error) {
+            req.flash("error",'something went wrong')
+            console.log(error);
+            return res.redirect(req.get('referer') || '/user/profile');
+        }
     }
 
 

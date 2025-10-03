@@ -17,4 +17,8 @@ router.post('/change-password',(req,res)=>{
 
 });
 
+router.get('/generate-report',(req,res)=>{
+    UserController.generateRepport(req,res);
+})
+
 module.exports = router
