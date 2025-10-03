@@ -117,7 +117,7 @@ module.exports = {
                 
                 if (takeFromBalance === "yes" && amount !== 0) {
                     
-                if (currentAmount < user.balance) {
+                if (amount < user.balance) {
                     user.balance -= amount;
                 } else {
                     req.flash('error', "if you wanna take from balance the current Amount should be smaller than the balance");
@@ -128,12 +128,15 @@ module.exports = {
             
             let id=req.params.id;
             let savingGoal= await SavingGoal.findByPk(id);
-            savingGoal.amount+=amount;
+             savingGoal.currentAmount+=amount;
             
+             console.log('user is :',user);
+             console.log('saving Goal is :',savingGoal);
+
             await savingGoal.save();
-            user.save();
+            await user.save();
             
-            req.flash('message', "amount added succesfully successfully");
+            req.flash('message', "amount added  successfully");
             return res.redirect(req.get('referer') || '/savingGoals');
             
          } catch (error) {
