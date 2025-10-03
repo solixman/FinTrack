@@ -707,3 +707,6 @@ Error: Engine 'ejs' not found. If this is a custom engine make sure it's properl
 2025-10-03T10:48:42.059Z - debug: Running chrome with params {"timeout":59326,"margin":{},"printBackground":true} rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
 2025-10-03T10:48:42.323Z - debug: Skipping storing report. rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
 2025-10-03T10:48:42.323Z - info: Rendering request 1 finished in 1813 ms rootId=u62x1zejmr8krc3, id=u62x1zejmr8krc3
+2025-10-03T11:37:52.192Z - info: Initializing jsreport (version: 4.10.1, configuration file: none, nodejs: 22.11.0)
+2025-10-03T11:37:52.195Z - info: Searching for available extensions in C:\Users\Youcode\Desktop\FinTrack\
+2025-10-03T11:37:52.201Z - info: Extensions location cache C:\Users\Youcode\AppData\Local\Temp\jsreport\core\locations.json contains older information, crawling
