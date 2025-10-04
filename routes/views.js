@@ -13,7 +13,7 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    res.render('../views/pages/login.ejs', { error: req.flash('error') });
+    res.render('../views/pages/login.ejs', { error: req.flash('error') ,message:req.flash('message')});
 });
 
 router.get('/', async (req, res) => {
