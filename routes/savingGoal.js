@@ -1,7 +1,9 @@
 const express = require('express');
 const router= express.Router()
 const savingGoalController=require('../controllers/savingGoalController');
+const checkUser=require('../middlewares/checkUser');
 
+router.use(checkUser);
 
 
 router.get('/savingGoals',(req,res)=>{

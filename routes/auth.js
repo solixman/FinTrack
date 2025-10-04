@@ -1,6 +1,7 @@
 const express = require('express');
 const router= express.Router()
 const authController = require('../controllers/authController')
+const checkUser=require('../middlewares/checkUser');
 
 
 router.post('/register',(req,res)=>{
@@ -16,7 +17,7 @@ router.get('/logout',(req,res)=>{
   authController.logout(req,res)
 });
 
-router.get('/current',(req,res)=>{
+router.get('/current',checkUser,(req,res)=>{
   user=req.session.user;
   return req.send(user)
 });

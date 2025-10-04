@@ -3,6 +3,7 @@ const router = express.Router();
 const UserController=require('../controllers/userController');
 
 
+
 router.get('/profile',(req,res)=>{
     UserController.Profile(req,res)
 

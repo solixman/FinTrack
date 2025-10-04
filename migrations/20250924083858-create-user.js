@@ -54,10 +54,6 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue: 'MAD',
       },
-      role: {
-        type: Sequelize.ENUM('admin', 'user'),
-        defaultValue: 'user',
-      },
       status: {
         type: Sequelize.ENUM('active', 'suspended', 'deleted'),
         defaultValue: 'active',
