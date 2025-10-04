@@ -31,12 +31,12 @@ const passwordRouter = require('./routes/passwordReset')
 
 app.use('/auth',authRouter);
 app.use(ViewsRouter);
+app.use('/user',userRouter);
+app.use(passwordRouter);
 app.use(transactionRouter)
 app.use(categoryRouter);
 app.use(savingGoalRouter);
 app.use(budgetsRouter);
-app.use('/user',userRouter);
-app.use(passwordRouter);
 
 
 
